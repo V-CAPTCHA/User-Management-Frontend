@@ -1,9 +1,16 @@
 <template>
   <v-app>
     <Navbar/>
+
     <v-main>
-      <router-view/>
+      <v-container>
+        <router-view/>
+      </v-container>
     </v-main>
+
+    <v-footer >
+      <p class="footer">copy right 2021</p>
+    </v-footer>
   </v-app>
 </template>
 
@@ -20,3 +27,11 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.footer {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+</style>
