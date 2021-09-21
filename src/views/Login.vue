@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" v-if="!this.$store.getters.isLoggedIn">
     <center>
       <h2>Login to VCAPTCHA</h2>
     </center>
@@ -56,7 +56,27 @@ export default {
   },
   methods: {
     login: function(){
-      alert('login')
+      const data = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('login', data)
+      .then(() => {      
+        this.$router.replace('/dashboard')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  created() {
+    if(this.$store.getters.isLoggedIn) {
+      this.$router.replace('/dashboard')
+    }
+  },
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn
     }
   }
 }
