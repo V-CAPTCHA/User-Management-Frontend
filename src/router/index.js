@@ -38,7 +38,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'UserManagement',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/UserManagement.vue'),
     children: [
       {
         path: '/dashboard',
@@ -59,8 +59,8 @@ const routes = [
   },
   {
     path: '*',
-    name: '404',
-    component: () => import('../views/404')
+    name: 'PageNotFound',
+    component: () => import('../views/PageNotFound')
   }
 ]
 
