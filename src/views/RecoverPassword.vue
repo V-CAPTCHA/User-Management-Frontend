@@ -7,6 +7,6 @@
 <script>
 
   export default {
-    name: 'Recover Password',
+    name: 'RecoverPassword',
   }
 </script>
