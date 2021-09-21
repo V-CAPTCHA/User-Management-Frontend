@@ -57,6 +57,11 @@ const routes = [
     name: 'EditProfile',
     component: () => import('../views/EditProfile')
   },
+  {
+    path: '*',
+    name: '404',
+    component: () => import('../views/404')
+  }
 ]
 
 const router = new VueRouter({
