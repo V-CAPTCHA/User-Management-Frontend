@@ -1,0 +1,67 @@
+<template>
+  <div>
+    <v-app-bar color="#1a73e8" dark>
+      <img src="../assets/logo.png" alt="logo" width="48px"/>
+      <v-app-bar-title>
+        <v-btn plain :to="{name: 'Home'}"  class="text-h5">VCAPTCHA</v-btn>
+      </v-app-bar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn plain :to="{name: 'Home'}">Home</v-btn>
+      <v-btn plain :to="{name: 'Guide'}">Guide</v-btn>
+      <v-btn plain href="https://www.github.com">Github</v-btn>
+      
+      <div v-if="!isLoggedIn">
+        <v-btn plain :to="{name: 'Login'}">Login</v-btn>
+        <v-btn plain :to="{name: 'Register'}">Register</v-btn>
+      </div>
+
+      <div v-else>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs}">
+            <v-btn plain v-on="on" v-bind="attrs">
+              Profile<v-icon aria-hidden="false">mdi-chevron-down</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item>
+              <v-btn plain :to="{name: 'Dashboard'}">Dashboard</v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-btn plain :to="{name: 'KeyManagement'}">Key Management</v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-btn plain :to="{name: 'EditProfile'}">Edit Profile</v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-btn text plain :on="logOut()">Logout</v-btn>
+            </v-list-item>
+          </v-list>
+
+        </v-menu>
+      </div>
+    </v-app-bar>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Navbar',
+  methods: {
+    logOut: function() {
+
+    }
+  },
+  computed: {
+    isLoggedIn: function() {
+      return false;
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
