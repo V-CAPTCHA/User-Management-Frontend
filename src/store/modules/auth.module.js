@@ -6,7 +6,6 @@ export const auth = {
   state: {
     status: '',
     token: localStorage.getItem('token') || '',
-    loadingStatus: false,
   },
   mutations: {
     auth_request(state) {
@@ -18,21 +17,16 @@ export const auth = {
     },
     auth_error(state) {
       state.status = 'error'
-      state.loadingStatus = false
     },
     logout(state) {
       state.status = ''
       state.token = ''
     },
-    set_loading(state, newLoading) {
-      state.loadingStatus = newLoading
-    }
   },
   actions: {
     login({commit}, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        commit('set_loading', true)
 
         axios.post(API_URL+'/login', user)
         .then((res) => {
@@ -42,7 +36,6 @@ export const auth = {
             localStorage.setItem('token', token)
             axios.defaults.headers.common['x-access-token'] = token
               
-            commit('set_loading')
             commit('auth_success', token)
             resolve(res)
           }
@@ -59,9 +52,10 @@ export const auth = {
     },
     logout({commit}, user) {
       return new Promise((resolve, reject) => {
-        commit('logout')
+        commit('auth_request')
         localStorage.removeItem('token')
         delete axios.defaults.headers.common['x-access-tokens']
+        commit('logout')
         resolve()
       })
     }
@@ -69,6 +63,5 @@ export const auth = {
   getters: {
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
-    loadingStatus: state => state.loadingStatus
   }
 }
