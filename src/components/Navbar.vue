@@ -7,7 +7,6 @@
       </v-app-bar-title>
 
       <v-spacer></v-spacer>
-
       <v-btn plain :to="{name: 'Home'}">Home</v-btn>
       <v-btn plain :to="{name: 'Guide'}">Guide</v-btn>
       <v-btn plain href="https://www.github.com">Github</v-btn>
@@ -71,8 +70,8 @@ export default {
     isLoggedIn: function() {
       return this.$store.getters.isLoggedIn
     },
-    isLoadding: function() {
-      return this.$store.getters.isLoadding
+    isLoading: function() {
+      return this.$store.getters.authStatus === 'loading'
     }
   }
 }
