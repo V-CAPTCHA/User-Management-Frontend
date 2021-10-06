@@ -38,6 +38,7 @@
             label="Password"
             outlined
             dense
+            type="password"
           ></v-text-field>
 
           <v-text-field
@@ -46,6 +47,7 @@
             label="Confirm Password"
             outlined
             dense
+            type="password"
           ></v-text-field>
 
           <v-btn 
@@ -53,6 +55,7 @@
             class="my-6" 
             color="#1a73e8" 
             depressed block dark 
+            @click="register()"
           >
             Register
           </v-btn>
@@ -67,16 +70,56 @@
 
 <script>
 
-  export default {
-    name: 'Register',
-    data() {
-      return {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+export default {
+  name: 'Register',
+  data() {
+    return {
+      firstName: 'test',
+      lastName: 'tes',
+      email: 'test@gmail.com',
+      password: '123456789',
+      confirmPassword: '123456789'
+    }
+  },
+  methods: {
+    register: function() {
+      const data = {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password
       }
+
+      const loginData = {
+        email: this.email,
+        password: this.password
+      }
+
+      this.$store.dispatch('register', data)
+      .then(() => {
+        //Login after register success
+        this.$store.dispatch('login', loginData)
+        .then(() => {
+          this.$router.replace('/dashboard')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  created() {
+    if(this.$store.getters.isLoggedIn) {
+      this.$router.replace('/dashboard')
+    }
+  },
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn
     }
   }
+}
 </script>
