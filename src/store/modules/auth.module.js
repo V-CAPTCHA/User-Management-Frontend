@@ -24,6 +24,7 @@ export const auth = {
     },
   },
   actions: {
+    //Login
     login({commit}, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request')
@@ -50,6 +51,7 @@ export const auth = {
         })
       })
     },
+    //Logout
     logout({commit}, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request')
@@ -57,6 +59,28 @@ export const auth = {
         delete axios.defaults.headers.common['x-access-tokens']
         commit('logout')
         resolve()
+      })
+    },
+    //Register
+    register({commit}, user) {
+      return new Promise((resolve, reject) => {
+        commit('auth_request')
+
+        axios.post(API_URL+'/register', user)
+        .then((res) => {
+          if(res.data.message === "register successfully") {
+            commit('auth_success')
+            resolve(res)
+          }
+          else {
+            commit('auth_error')
+            reject(res.data.message)
+          }
+        })
+        .catch((err) => {
+          commit("auth_error")
+          reject(err)
+        })
       })
     }
   },
