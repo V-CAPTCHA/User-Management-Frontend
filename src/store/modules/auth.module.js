@@ -82,6 +82,28 @@ export const auth = {
           reject(err)
         })
       })
+    },
+    //RecoverPassword
+    requestNewPassword({commit}, email) {
+      return new Promise((resolve, reject) => {
+        commit('auth_request')
+
+        axios.post(API_URL+'/resetpassword/', email)
+        .then((res) => {
+          if(res.data.message === "send link to reset password successfully") {
+            commit("auth_success")
+            resolve(res)
+          }
+          else {
+            commit('auth_error')
+            reject(res.data.message)
+          }
+        })
+        .catch((err) => {
+          commit("auth_error")
+          reject(err)
+        })
+      })
     }
   },
   getters: {
