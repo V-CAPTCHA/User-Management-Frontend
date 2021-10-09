@@ -8,7 +8,7 @@
       </v-container>
     </v-main>
 
-    <v-footer >
+    <v-footer color="#1a73e8" dark>
       <p class="footer">copy right 2021</p>
     </v-footer>
   </v-app>
