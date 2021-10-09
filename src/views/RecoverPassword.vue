@@ -18,7 +18,8 @@
             id="loginBtn" 
             class="mb-6" 
             color="#1a73e8" 
-            depressed block dark 
+            depressed block dark
+            @click="requestNewPassword()"
           >
             Recover Password
           </v-btn>
@@ -33,12 +34,37 @@
 
 <script>
 
-  export default {
-    name: 'RecoverPassword',
-    data() {
-      return {
-        email: ''
+export default {
+  name: 'RecoverPassword',
+  data() {
+    return {
+      email: ''
+    }
+  },
+  methods: {
+    requestNewPassword: function() {
+      const data = {
+        email: this.email
       }
+
+      this.$store.dispatch('requestNewPassword', data)
+      .then(() => {
+        //alert sucess
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  },
+  created() {
+    if(this.$store.getters.isLoggedIn) {
+      this.$router.replace('/dashboard')
+    }
+  },
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn
     }
   }
+}
 </script>
