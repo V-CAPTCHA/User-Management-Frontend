@@ -26,7 +26,8 @@
             id="loginBtn" 
             class="mb-6" 
             color="#1a73e8" 
-            depressed block dark 
+            depressed block dark
+            @click="resetPassword()"
           >
             Reset Password
           </v-btn>
@@ -44,6 +45,32 @@
       return {
         newPassword: '',
         confirmNewPassword: '',
+      }
+    },
+    methods: {
+      resetPassword: function() {
+        const data = {
+          new_password: this.newPassword,
+          token: this.$route.params.token
+        }
+
+        this.$store.dispatch('resetPassword', data)
+        .then(() => {
+          this.$router.replace('/login')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+    },
+    created() {
+      if(this.$store.getters.isLoggedIn) {
+        this.$router.replace('/dashboard')
+      }
+    },
+    computed: {
+      isLoggedIn: function() {
+        return this.$store.getters.isLoggedIn
       }
     }
   }
