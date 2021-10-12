@@ -121,6 +121,19 @@
         newPassword: "",
         confirmationPassword: "",
       }
+    },
+    metohds: {
+
+    },
+    created() {
+      if(!this.$store.getters.isLoggedIn) {
+        this.$router.replace('/login')
+      }
+    },
+    computed: {
+      isLoggedIn: function() {
+        return this.$store.getters.isLoggedIn
+      }
     }
   }
 </script>
