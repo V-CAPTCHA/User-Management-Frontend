@@ -30,6 +30,7 @@
               id="saveBtn" 
               color="#1a73e8" 
               depressed dark
+              @click="changeUserData()"
             >Save</v-btn>
 
             <v-btn
@@ -80,6 +81,7 @@
               id="saveBtn" 
               color="#1a73e8" 
               depressed dark
+              @click="changePassword()"
             >Save</v-btn>
 
             <v-btn
@@ -101,7 +103,8 @@
             class="ml-2"
             id="cancelBtn" 
             color="red" 
-            depressed dark 
+            depressed dark
+            @click="deleteAccount()"
           >Delete</v-btn>
         </v-container>
       </v-form>
@@ -122,13 +125,23 @@
         confirmationPassword: "",
       }
     },
-    metohds: {
+    methods: {
 
     },
     created() {
       if(!this.$store.getters.isLoggedIn) {
         this.$router.replace('/login')
       }
+
+      //get user data on created
+      this.$store.dispatch('getUserData')
+      .then((user) => {
+        this.firstName = user.first_name;
+        this.lastName = user.last_name;
+      })
+      .catch(err => {
+        console.log(err)
+      });
     },
     computed: {
       isLoggedIn: function() {
