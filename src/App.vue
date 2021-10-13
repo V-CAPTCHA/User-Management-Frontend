@@ -9,7 +9,7 @@
     </v-main>
 
     <v-footer color="#1a73e8" dark>
-      <p class="footer">copy right 2021</p>
+      <p class="footer">© 2021 VCAPTCHA</p>
     </v-footer>
   </v-app>
 </template>
