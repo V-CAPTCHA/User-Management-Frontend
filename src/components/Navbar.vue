@@ -7,7 +7,6 @@
       </v-app-bar-title>
 
       <v-spacer></v-spacer>
-
       <v-btn plain :to="{name: 'Home'}">Home</v-btn>
       <v-btn plain :to="{name: 'Guide'}">Guide</v-btn>
       <v-btn plain href="https://www.github.com">Github</v-btn>
@@ -36,13 +35,25 @@
               <v-btn plain :to="{name: 'EditProfile'}">Edit Profile</v-btn>
             </v-list-item>
             <v-list-item>
-              <v-btn text plain :on="logOut()">Logout</v-btn>
+              <v-btn text plain @click="logOut()">Logout</v-btn>
             </v-list-item>
           </v-list>
 
         </v-menu>
       </div>
     </v-app-bar>
+
+    <v-progress-linear
+      v-if="isLoading"
+      indeterminate
+      color="#1a73e8"
+    ></v-progress-linear>
+
+    <v-progress-linear
+      v-else
+      value="100"
+      color="#1a73e8"
+    ></v-progress-linear>
   </div>
 </template>
 
@@ -51,12 +62,16 @@ export default {
   name: 'Navbar',
   methods: {
     logOut: function() {
-
+      this.$store.dispatch('logout')
+      this.$router.replace('/login')
     }
   },
   computed: {
     isLoggedIn: function() {
-      return false;
+      return this.$store.getters.isLoggedIn
+    },
+    isLoading: function() {
+      return this.$store.getters.authStatus === 'loading'
     }
   }
 }
