@@ -24,11 +24,33 @@ export const user = {
         
         axios.get(API_URL+'/users')
         .then(res => {
-          let userData = res.data.data;
-          resolve(userData);
+          if(res.data.message === "get user successfully") {
+            let userData = res.data.data;
+            resolve(userData);
+          }
+          else {
+            reject(res.data.message);
+          }
         })
         .catch(err => {
-          commit('auth_error');
+          reject(err)
+        })
+      })
+    },    
+    //change user data
+    changeUserData({commit}, user) {
+      return new Promise((resolve, reject) => {
+
+        axios.post(API_URL+'/users', user)
+        .then(res => {
+          if(res.data.message === "change first name and last name successfully") {
+            resolve(res)
+          }
+          else {
+            resolve(res.data.message)
+          }
+        })
+        .catch(err => {
           reject(err)
         })
       })
