@@ -126,7 +126,25 @@
       }
     },
     methods: {
-
+      changeUserData: function() {
+        const user = {
+          first_name: this.firstName,
+          last_name: this.lastName,
+        }
+        this.$store.dispatch('changeUserData', user)
+        .then(() => {
+          //
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      },
+      changePassword: function() {
+        console.log('password')
+      },
+      deleteAccount: function() {
+        console.log('delete')
+      },
     },
     created() {
       if(!this.$store.getters.isLoggedIn) {
