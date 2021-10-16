@@ -72,6 +72,23 @@ export const user = {
           reject(err)
         })
       })
+    },
+    //delete account
+    deleteAccount({commit}) {
+      return new Promise((resolve, reject) => {
+        axios.delete(API_URL+'/users')
+        .then(res => {
+          if (res.data.message === "delete account successfully") {
+            resolve.apply(res)
+          }
+          else {
+            resolve(res.data.message)
+          }
+        })
+        .catch(err => {
+          reject(err)
+        })
+      })
     }
   },
   getters: {
