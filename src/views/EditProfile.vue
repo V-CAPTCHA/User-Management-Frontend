@@ -158,7 +158,12 @@
         })
       },
       deleteAccount: function() {
-        console.log('delete')
+        this.$store.dispatch('deleteAccount')
+        .then(() => {
+          alert("delete account successfully")
+          this.$store.dispatch("logout")
+          this.$router.replace('/login')
+        })
       },
     },
     created() {
