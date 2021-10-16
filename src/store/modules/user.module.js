@@ -55,6 +55,24 @@ export const user = {
         })
       })
     },
+    //change password
+    changePassword({commit}, password) {
+      return new Promise((resolve, reject) => {
+
+        axios.post(API_URL+'/users/password', password)
+        .then(res => {
+          if(res.data.message === "change password successfully"){
+            resolve(res)
+          }
+          else {
+            resolve(res.data.message)
+          }
+        })
+        .catch(err => {
+          reject(err)
+        })
+      })
+    }
   },
   getters: {
     userData: state => state.user
