@@ -15,12 +15,14 @@
           </tr>
         </thead>
         
-        <tbody>
+        <tbody v-if="!!keys">
           <tr v-for="key in keys" :key="key.id">
             <td>{{ key.key_name }}</td>
             <td>{{ key.creation_date }}</td>
             <td>{{ key.key_value }}</td>
-            <td>{{ key.domain }}</td>
+            <td>
+              <a :href="'https://www.'+key.domain" target="_blank">{{ key.domain }}</a>
+            </td>
             <td>
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs}">
@@ -41,6 +43,15 @@
             </td>
           </tr>
         </tbody>
+        <tbody v-else>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>ไม่มี</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
       </template>
     </v-simple-table>
   </div>
@@ -51,7 +62,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      keys: [
+      keys: [ 
         {
           "key_id": 3,
           "key_name": "google",
