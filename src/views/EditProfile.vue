@@ -33,11 +33,11 @@
               @click="changeUserData()"
             >Save</v-btn>
 
-            <v-btn
+            <!-- <v-btn
               class="ml-2 cancelBtn"
               color="grey" 
               depressed dark 
-            >Cancel</v-btn>
+            >Cancel</v-btn> -->
           </div>
         </v-container>
       </v-form>
@@ -83,11 +83,11 @@
               @click="changePassword()"
             >Save</v-btn>
 
-            <v-btn
+            <!-- <v-btn
               class="ml-2 cancelBtn"
               color="grey" 
               depressed dark 
-            >Cancel</v-btn>
+            >Cancel</v-btn> -->
           </div>
         </v-container>
       </v-form>
