@@ -1,7 +1,16 @@
 <template>
   <div>
-    <h1>User Management</h1>
-    <router-view></router-view>
+    <v-card outlined>
+      <v-container>
+        <v-tabs class="mb-2">
+          <v-tab :to="{name: 'Dashboard'}">Dashboard</v-tab>
+          <v-tab :to="{name: 'KeyManagement'}">Keys</v-tab>
+        </v-tabs>
+
+        <router-view></router-view>
+
+      </v-container>
+    </v-card>
   </div>
 </template>
 
