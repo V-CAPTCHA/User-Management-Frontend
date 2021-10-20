@@ -27,14 +27,14 @@
           <div class="buttonContainer">
             <!--Button-->
             <v-btn
-              id="saveBtn" 
+              class="saveBtn" 
               color="#1a73e8" 
               depressed dark
+              @click="changeUserData()"
             >Save</v-btn>
 
             <v-btn
-              class="ml-2"
-              id="cancelBtn" 
+              class="ml-2 cancelBtn"
               color="grey" 
               depressed dark 
             >Cancel</v-btn>
@@ -53,7 +53,7 @@
             label="Current Password"
             outlined
             dense
-            type="text"
+            type="password"
           ></v-text-field>
 
           <v-text-field
@@ -62,7 +62,7 @@
             label="New Password"
             outlined
             dense
-            type="text"
+            type="password"
           ></v-text-field>
 
           <v-text-field
@@ -71,20 +71,20 @@
             label="Password Confirmation"
             outlined
             dense
-            type="text"
+            type="password"
           ></v-text-field>
 
           <div class="buttonContainer">
             <!--Button-->
             <v-btn
-              id="saveBtn" 
+              class="saveBtn" 
               color="#1a73e8" 
               depressed dark
+              @click="changePassword()"
             >Save</v-btn>
 
             <v-btn
-              class="ml-2"
-              id="cancelBtn" 
+              class="ml-2 cancelBtn"
               color="grey" 
               depressed dark 
             >Cancel</v-btn>
@@ -101,7 +101,8 @@
             class="ml-2"
             id="cancelBtn" 
             color="red" 
-            depressed dark 
+            depressed dark
+            @click="deleteAccount()"
           >Delete</v-btn>
         </v-container>
       </v-form>
@@ -122,13 +123,63 @@
         confirmationPassword: "",
       }
     },
-    metohds: {
-
+    methods: {
+      //Change user data
+      changeUserData: function() {
+        const user = {
+          first_name: this.firstName,
+          last_name: this.lastName,
+        }
+        this.$store.dispatch('changeUserData', user)
+        .then(() => {
+          alert('Edit profile successfully')
+        })
+        .catch(err => {
+          alert(err.message)
+          console.log(err)
+        })
+      },
+      //Change password
+      changePassword: function() {
+        const password = {
+          current_password: this.currentPassword,
+          new_password: this.newPassword,
+        }
+        this.$store.dispatch('changePassword', password)
+        .then(() => {
+          alert("Change password successfully")
+          this.currentPassword = ''
+          this.newPassword = ''
+          this.confirmationPassword = ''
+        })
+        .catch(err => {
+          alert(err.message)
+          console.log(err)
+        })
+      },
+      deleteAccount: function() {
+        this.$store.dispatch('deleteAccount')
+        .then(() => {
+          alert("delete account successfully")
+          this.$store.dispatch("logout")
+          this.$router.replace('/login')
+        })
+      },
     },
     created() {
       if(!this.$store.getters.isLoggedIn) {
         this.$router.replace('/login')
       }
+
+      //get user data on created
+      this.$store.dispatch('getUserData')
+      .then((user) => {
+        this.firstName = user.first_name;
+        this.lastName = user.last_name;
+      })
+      .catch(err => {
+        console.log(err)
+      });
     },
     computed: {
       isLoggedIn: function() {
