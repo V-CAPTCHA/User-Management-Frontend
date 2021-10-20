@@ -49,9 +49,11 @@ export default {
 
       this.$store.dispatch('requestNewPassword', data)
       .then(() => {
+        alert("send link to reset password successfully")
         //alert sucess
       })
       .catch((err) => {
+        alert(err.message)
         console.log(err)
       })
     }

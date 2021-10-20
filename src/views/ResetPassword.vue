@@ -12,6 +12,7 @@
             label="New Password"
             outlined
             dense
+            type="password"
           ></v-text-field>
 
           <v-text-field
@@ -20,6 +21,7 @@
             label="Confirm New Password"
             outlined
             dense
+            type="password"
           ></v-text-field>
           
           <v-btn 
@@ -56,9 +58,11 @@
 
         this.$store.dispatch('resetPassword', data)
         .then(() => {
+          alert("reset password successfully")
           this.$router.replace('/login')
         })
         .catch((err) => {
+          alert(err.message)
           console.log(err)
         })
       }

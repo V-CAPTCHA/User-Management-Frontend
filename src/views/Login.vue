@@ -65,6 +65,7 @@ export default {
         this.$router.replace('/dashboard')
       })
       .catch(err => {
+        alert(err.message)
         console.log(err)
       })
     }
