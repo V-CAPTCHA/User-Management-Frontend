@@ -1,8 +1,11 @@
 <template>
   <div class="key-management">  
     <div class="header">
-      <v-btn text color="#1a73e8" class="mb-2">+ CREATE KEY</v-btn>
+      <v-btn text color="#1a73e8" class="mb-2" @click="showCreateBox()">
+        + CREATE KEY
+        </v-btn>
     </div>
+
     <v-simple-table>
       <template v-slot:default>
         <thead>
@@ -33,7 +36,7 @@
 
                 <v-list>
                   <v-list-item>
-                    <v-btn plain color="#1a73e8">Edit</v-btn>
+                    <v-btn plain color="#1a73e8" @click="showEditBox()">Edit</v-btn>
                   </v-list-item>
                   <v-list-item>
                     <v-btn plain color="red">Delete</v-btn>
@@ -54,12 +57,21 @@
         </tbody>
       </template>
     </v-simple-table>
+
+    <KeyForm title="Create Key" v-if="createBoxIsShow" :cancel="closeCreateBox" />
+
+    <KeyForm title="Edit Key" v-if="editBoxIsShow" :cancel="closeEditBox" />
   </div>
 </template>
 
 <script>
+import KeyForm from '../components/KeyForm.vue';
+
 export default {
   name: 'Home',
+  components: {
+    KeyForm,
+  },
   data() {
     return {
       keys: [ 
@@ -91,7 +103,23 @@ export default {
           "domain": "instagram.com",
           "key_value": "-XokP1tnfshZ2Kz4qNZcw"
         }
-      ]
+      ],
+      createBoxIsShow: false,
+      editBoxIsShow: false,
+    }
+  },
+  methods: {
+    showCreateBox: function() {
+      this.createBoxIsShow = true;
+    },
+    closeCreateBox: function() {
+      this.createBoxIsShow = false;
+    },
+    showEditBox: function() {
+      this.editBoxIsShow = true;
+    },
+    closeEditBox: function() {
+      this.editBoxIsShow = false;
     }
   }
 }
