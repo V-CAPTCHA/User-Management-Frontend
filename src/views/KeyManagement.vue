@@ -93,36 +93,7 @@ export default {
       id: '',
       name: '',
       domain: '',
-      keys: [ 
-        {
-          "key_id": 3,
-          "key_name": "google",
-          "creation_date": "2021-09-16",
-          "domain": "goole.com",
-          "key_value": "fBldgwJUnDqRQhDWe5GMX"
-        },
-        {
-          "key_id": 4,
-          "key_name": "twitter",
-          "creation_date": "2021-09-16",
-          "domain": "twitter.com",
-          "key_value": "s8oRwnejo1xeFEpxiH_Ry"
-        },
-        {
-          "key_id": 5,
-          "key_name": "youtube",
-          "creation_date": "2021-09-16",
-          "domain": "youtube.com",
-          "key_value": "V2eQcD-xpKP5V8DhHPUL3"
-        },
-        {
-          "key_id": 6,
-          "key_name": "instagram",
-          "creation_date": "2021-09-16",
-          "domain": "instagram.com",
-          "key_value": "-XokP1tnfshZ2Kz4qNZcw"
-        }
-      ],
+      keys: [],
       createBoxIsShow: false,
       editBoxIsShow: false,
     }
@@ -146,7 +117,16 @@ export default {
     confirmCreate: function() {
       console.log('create');
     },
-  }
+  },
+  mounted() {
+    this.$store.dispatch('getAllKey')
+    .then((keys) => {
+      this.keys = keys
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },
 }
 </script>
 
