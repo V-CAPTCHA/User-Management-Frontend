@@ -39,7 +39,7 @@
                     <v-btn plain color="#1a73e8" @click="showEditBox(key.key_id, key.key_name, key.domain)">Edit</v-btn>
                   </v-list-item>
                   <v-list-item>
-                    <v-btn plain color="red">Delete</v-btn>
+                    <v-btn plain color="red" @click="deleteKey(key.key_id)">Delete</v-btn>
                   </v-list-item>
                 </v-list>
               </v-menu>         
@@ -99,6 +99,15 @@ export default {
     }
   },
   methods: {
+    getAllKey: function() {
+      this.$store.dispatch('getAllKey')
+      .then((keys) => {
+        this.keys = keys
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
     showCreateBox: function() {
       this.createBoxIsShow = true;
     },
@@ -117,15 +126,16 @@ export default {
     confirmCreate: function() {
       console.log('create');
     },
+    deleteKey(id) {
+      this.$store.dispatch('deleteKey', id)
+      .then(() => { this.getAllKey() })
+    },
+  },
+  beforeUpdate() {
+    this.getAllKey();
   },
   mounted() {
-    this.$store.dispatch('getAllKey')
-    .then((keys) => {
-      this.keys = keys
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    this.getAllKey();
   },
 }
 </script>
