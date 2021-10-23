@@ -32,5 +32,40 @@ export const key = {
         })
       }) 
     },
+    //create key
+    createKey({commit}, key) {
+      return new Promise((resolve, reject) => {
+
+        axios.post(API_URL+'/keys', key)
+        .then(res => {
+          if(res.data.message === "create key successfully") {
+            resolve(res)
+          }
+          else {
+            reject(res.data.message);
+          }
+        })
+        .catch(err => {
+          reject(err)
+        })
+      })
+    },
+    //delete key
+    deleteKey({commit}, id) {
+      return new Promise((resolve, reject) => {
+        axios.delete(API_URL+'/keys/'+id)
+        .then(res => {
+          if(res.data.message === "delete key successfully") {
+            resolve(res)
+          }
+          else {
+            reject(res.data.message)
+          }
+        })
+        .catch(err => {
+          reject(err)
+        })
+      })
+    }
   },
 }
