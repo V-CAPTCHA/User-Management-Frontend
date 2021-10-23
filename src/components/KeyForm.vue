@@ -77,8 +77,14 @@ export default {
 
       //create key
       if(this.isCreate) {
-        console.log('create')
-        console.log(key);
+        this.$store.dispatch("createKey", key)
+        .then(() => {
+          this.cancel();
+        })
+        .catch(err => {
+          alert("Your keys has reached its activation limit")
+          console.log(err)
+        })
       }
       //edit key
       else if(this.isEdit) {
