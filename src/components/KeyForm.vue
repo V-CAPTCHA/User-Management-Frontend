@@ -53,19 +53,46 @@
 export default {
   name: "KeyForm",
   props: {
-    confirm: Function,
     cancel: Function,
-    title: String
+    title: String,
+    key_id: Number,
+    key_name: String,
+    key_domain: String,
+    isCreate: Boolean,
+    isEdit: Boolean,
   },
   data() {
     return {
-      name: "",
-      domain: "",
+      id: '',
+      name: '',
+      domain: '',
     }
   },
   methods: {
+    confirm: function() {
+      const key = {
+        key_name: this.name,
+        domain: this.domain,
+      }
 
-  }
+      //create key
+      if(this.isCreate) {
+        console.log('create')
+        console.log(key);
+      }
+      //edit key
+      else if(this.isEdit) {
+        console.log('edit')
+        console.log(this.id)
+        console.log(key);
+      }
+    }
+  },
+  mounted() {
+    this.id = this.key_id;
+    this.name = this.key_name;
+    this.domain = this.key_domain;
+  },
 }
 </script>
 

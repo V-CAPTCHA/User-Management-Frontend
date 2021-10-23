@@ -19,7 +19,7 @@
         </thead>
         
         <tbody v-if="!!keys">
-          <tr v-for="key in keys" :key="key.id">
+          <tr v-for="key in keys" :key="key.key_id">
             <td>{{ key.key_name }}</td>
             <td>{{ key.creation_date }}</td>
             <td>{{ key.key_value }}</td>
@@ -36,7 +36,7 @@
 
                 <v-list>
                   <v-list-item>
-                    <v-btn plain color="#1a73e8" @click="showEditBox()">Edit</v-btn>
+                    <v-btn plain color="#1a73e8" @click="showEditBox(key.key_id, key.key_name, key.domain)">Edit</v-btn>
                   </v-list-item>
                   <v-list-item>
                     <v-btn plain color="red">Delete</v-btn>
@@ -58,9 +58,25 @@
       </template>
     </v-simple-table>
 
-    <KeyForm title="Create Key" v-if="createBoxIsShow" :cancel="closeCreateBox" />
+    <!-- Create -->
+    <KeyForm 
+      title="Create Key" 
+      v-if="createBoxIsShow" 
+      :isCreate="true"
+      :cancel="closeCreateBox" 
+    />
 
-    <KeyForm title="Edit Key" v-if="editBoxIsShow" :cancel="closeEditBox" />
+    <!-- Edit -->
+    <KeyForm 
+      title="Edit Key" 
+      v-if="editBoxIsShow" 
+      :isEdit="true"
+      :cancel="closeEditBox"
+      :key_id="id"
+      :key_name="name" 
+      :key_domain="domain" 
+    />
+
   </div>
 </template>
 
@@ -74,6 +90,9 @@ export default {
   },
   data() {
     return {
+      id: '',
+      name: '',
+      domain: '',
       keys: [ 
         {
           "key_id": 3,
@@ -115,12 +134,18 @@ export default {
     closeCreateBox: function() {
       this.createBoxIsShow = false;
     },
-    showEditBox: function() {
+    showEditBox: function(id, name, domain) {
+      this.id = id;
+      this.name = name;
+      this.domain = domain;
       this.editBoxIsShow = true;
     },
     closeEditBox: function() {
       this.editBoxIsShow = false;
-    }
+    },
+    confirmCreate: function() {
+      console.log('create');
+    },
   }
 }
 </script>
@@ -134,7 +159,5 @@ export default {
 thead {
   background-color: #1a73e8;
 }
-
-
 
 </style>
