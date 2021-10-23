@@ -74,11 +74,11 @@ export default {
   name: 'Register',
   data() {
     return {
-      firstName: 'test',
-      lastName: 'tes',
-      email: 'test@gmail.com',
-      password: '123456789',
-      confirmPassword: '123456789'
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
     }
   },
   methods: {
