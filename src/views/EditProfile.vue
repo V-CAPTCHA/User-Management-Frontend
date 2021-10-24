@@ -10,6 +10,7 @@
             id="firstName"
             v-model="firstName"
             label="First Name"
+            counter="50"
             outlined
             dense
             type="text"
@@ -19,6 +20,7 @@
             id="lastName"
             v-model="lastName"
             label="Last Name"
+            counter="50"
             outlined
             dense
             type="text"
