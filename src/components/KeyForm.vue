@@ -88,9 +88,19 @@ export default {
       }
       //edit key
       else if(this.isEdit) {
-        console.log('edit')
-        console.log(this.id)
-        console.log(key);
+        const data = {
+          id: this.id,
+          key: key
+        }
+        this.$store.dispatch("editKey", data)
+        .then(() => {
+          this.cancel();
+          alert('Update success')
+        })
+        .catch(err => {
+          alert(err.message)
+          console.log(err)
+        })
       }
     }
   },
