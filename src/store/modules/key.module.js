@@ -50,6 +50,21 @@ export const key = {
         })
       })
     },
+    //edit key
+    editKey({commit}, data) {
+      return new Promise((resolve, reject) => {
+        axios.patch(API_URL+'/keys/'+data.id, data.key).then(res => {
+          if(res.data.message === "edit key successfully") {
+            resolve(res)
+          }
+          else {
+            reject(res.data.message)
+          }
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     //delete key
     deleteKey({commit}, id) {
       return new Promise((resolve, reject) => {
