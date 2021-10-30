@@ -41,10 +41,10 @@
       <v-col lg="12">
         <v-card elevation="0" outlined>
           <v-card-title class="text--secondary">
-            <h4>Total Request</h4>
+            <h4>Total Requests</h4>
           </v-card-title>
           <v-card-subtitle>
-            <TotalChart />
+            <TotalChart :requestValue="totalRequestArray" />
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -54,10 +54,10 @@
       <v-col lg="6">
         <v-card elevation="0" outlined>
           <v-card-title class="green--text text--lighten-1">
-            <h4>Total Invalid Request</h4>
+            <h4>Total Valid Requests</h4>
           </v-card-title>
           <v-card-subtitle>
-            <ValidChart />
+            <ValidChart :requestValue="totalValidRequestArray" />
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -65,10 +65,10 @@
       <v-col lg="6">
         <v-card elevation="0" outlined>
           <v-card-title class="red--text text--lighten-1">
-            <h4>Total Request</h4>
+            <h4>Total Invalid Requests</h4>
           </v-card-title>
           <v-card-subtitle>
-            <InvalidChart />
+            <InvalidChart :requestValue="totalInvalidRequestArray" />
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -93,7 +93,34 @@ export default {
       totalRequest: 0,
       validRequest: 0,
       invalidRequest: 0,
+      totalRequestArray: new Array(90).fill(0),
+      totalValidRequestArray: new Array(90).fill(0),
+      totalInvalidRequestArray: new Array(90).fill(0),
+
     }
+  },
+  created() {
+    //Fake value
+    this.totalRequest = 9868
+    this.validRequest = 96
+    this.invalidRequest = 4
+
+    this.totalRequestArray = []
+    for(var i=0; i<=90; i++) {
+      this.totalRequestArray.push(Math.floor(Math.random() * (95-85))+85)
+    }
+
+    this.totalValidRequestArray = []
+    for(var i=0; i<=90; i++) {
+      this.totalValidRequestArray.push(Math.floor(Math.random() * (85-75))+75)
+    }
+
+    this.totalInvalidRequestArray = []
+    for(var i=0; i<=90; i++) {
+      this.totalInvalidRequestArray.push(Math.floor(Math.random() * (5-0))+0)
+    }
+    
+
   }
 }
 </script>
