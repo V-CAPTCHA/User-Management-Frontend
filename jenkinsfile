@@ -29,7 +29,7 @@ pipeline {
                 stage('Move Builed file to Nginx Location') {
             steps {
                 
-                sh 'copy -r /dist/* /var/www/html/'
+                sh 'cp -r dist/* /var/www/html/'
             }
         }
     }
