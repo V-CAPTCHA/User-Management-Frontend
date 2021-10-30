@@ -9,7 +9,7 @@
       <v-spacer></v-spacer>
       <v-btn plain :to="{name: 'Home'}">Home</v-btn>
       <v-btn plain :to="{name: 'Guide'}">Guide</v-btn>
-      <v-btn plain href="https://github.com/V-CAPTCHA" target="_blank">Github</v-btn>
+      <v-btn plain href="https://github.com/V-CAPTCHA" target="_blank"><v-icon aria-hidden="false">mdi-github</v-icon> Github</v-btn>
       
       <div v-if="!isLoggedIn">
         <v-btn plain :to="{name: 'Login'}">Login</v-btn>
