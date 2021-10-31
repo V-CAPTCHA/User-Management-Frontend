@@ -28,7 +28,7 @@ pipeline {
         }
                 stage('Move Builed file to Nginx Location') {
             steps {
-                
+                sh 'rm -R -f /var/www/html/*'
                 sh 'cp -r dist/* /var/www/html/'
             }
         }
