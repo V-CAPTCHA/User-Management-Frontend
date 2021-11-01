@@ -19,7 +19,8 @@
             <h4 class="green--text text--lighten-1">Valid Request</h4>
           </v-card-title>
           <v-card-subtitle class="text--primary" style="text-align: center">
-            <p class="text-h2 green--text">{{validRequest}}%</p>
+            <p class="text-h2 green--text" v-if="validRequest === '-'">-</p>
+            <p class="text-h2 green--text" v-else>{{validRequest}}%</p>
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -30,7 +31,8 @@
             <h4 class="red--text text--lighten-1">Invalid Request</h4>
           </v-card-title>
           <v-card-subtitle class="text--primary" style="text-align: center">
-            <p class="text-h2 red--text">{{invalidRequest}}%</p>
+            <p class="text-h2 red--text" v-if="invalidRequest === '-'">-</p>
+            <p class="text-h2 red--text" v-else>{{invalidRequest}}%</p>
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -49,8 +51,8 @@
               <v-progress-circular
                 indeterminate
                 color="#505050"
-                :size="50"
-              ></v-progress-circular>
+                :size="100"
+              >loading</v-progress-circular>
             </div>
           </v-card-subtitle>
         </v-card>
@@ -69,8 +71,8 @@
               <v-progress-circular
                 indeterminate
                 color="#66bb6a"
-                :size="50"
-              ></v-progress-circular>
+                :size="100"
+              >loading</v-progress-circular>
             </div>
           </v-card-subtitle>
         </v-card>
@@ -87,8 +89,8 @@
               <v-progress-circular
                 indeterminate
                 color="#ef5350"
-                :size="50"
-              ></v-progress-circular>
+                :size="100"
+              >loading</v-progress-circular>
             </div>
           </v-card-subtitle>
         </v-card>
@@ -106,6 +108,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
@@ -152,7 +155,6 @@ export default {
     //invalid request
     this.$store.dispatch("getInvalidRequest")
     .then(data => {
-      console.log(data)
       this.invalidRequest = data.invalidPercent;
       this.totalInvalidRequestArray = data.invalidRequestPerDay;
     })
