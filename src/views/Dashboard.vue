@@ -45,6 +45,13 @@
           </v-card-title>
           <v-card-subtitle>
             <TotalChart :requestValue="totalRequestArray" />
+            <div class="loading" v-if="isTotalRequestLoading">
+              <v-progress-circular
+                indeterminate
+                color="#505050"
+                :size="50"
+              ></v-progress-circular>
+            </div>
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -58,6 +65,13 @@
           </v-card-title>
           <v-card-subtitle>
             <ValidChart :requestValue="totalValidRequestArray" />
+            <div class="loading" v-if="isValidRequestLoading">
+              <v-progress-circular
+                indeterminate
+                color="#66bb6a"
+                :size="50"
+              ></v-progress-circular>
+            </div>
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -69,12 +83,33 @@
           </v-card-title>
           <v-card-subtitle>
             <InvalidChart :requestValue="totalInvalidRequestArray" />
+            <div class="loading" v-if="isInvalidRequestLoading">
+              <v-progress-circular
+                indeterminate
+                color="#ef5350"
+                :size="50"
+              ></v-progress-circular>
+            </div>
           </v-card-subtitle>
         </v-card>
       </v-col>
     </v-row>
   </div>
 </template>
+
+<style scoped>
+.loading {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8) ;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>
 
 <script>
 import TotalChart from '../components/Charts/TotalChart.vue';
@@ -100,27 +135,38 @@ export default {
     }
   },
   created() {
-    //Fake value
-    this.totalRequest = 9868
-    this.validRequest = 96
-    this.invalidRequest = 4
+    //total request
+    this.$store.dispatch("getTotalRequest")
+    .then(data => {
+      this.totalRequest = data.totalRequest;
+      this.totalRequestArray = data.totalRequestPerDay;
+    })
 
-    this.totalRequestArray = []
-    for(var i=0; i<=90; i++) {
-      this.totalRequestArray.push(Math.floor(Math.random() * (95-85))+85)
-    }
+    //valid reqeust
+    this.$store.dispatch("getValidRequest")
+    .then(data => {
+      this.validRequest = data.validPercent;
+      this.totalValidRequestArray = data.validRequestPerDay;
+    })
 
-    this.totalValidRequestArray = []
-    for(var i=0; i<=90; i++) {
-      this.totalValidRequestArray.push(Math.floor(Math.random() * (85-75))+75)
-    }
-
-    this.totalInvalidRequestArray = []
-    for(var i=0; i<=90; i++) {
-      this.totalInvalidRequestArray.push(Math.floor(Math.random() * (5-0))+0)
-    }
-    
-
+    //invalid request
+    this.$store.dispatch("getInvalidRequest")
+    .then(data => {
+      console.log(data)
+      this.invalidRequest = data.invalidPercent;
+      this.totalInvalidRequestArray = data.invalidRequestPerDay;
+    })
+  },
+  computed: {
+    isTotalRequestLoading: function() {
+      return this.$store.getters.totalRequestStatus === 'loading';
+    },
+    isValidRequestLoading: function() {
+      return this.$store.getters.validRequestStatus === 'loading';
+    },
+    isInvalidRequestLoading: function() {
+      return this.$store.getters.invalidRequestStatus === 'loading';
+    },
   }
 }
 </script>
