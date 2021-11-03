@@ -36,6 +36,9 @@
 
 export default {
   name: 'RecoverPassword',
+  metaInfo: {
+    title: 'Recover Password | VCAPTCHA '
+  },
   data() {
     return {
       email: ''

@@ -121,6 +121,9 @@ import InvalidChart from '../components/Charts/InvalidChart.vue';
 
 export default {
   name: 'Dashboard',
+  metaInfo: {
+    title: 'Dashboard | VCAPTCHA '
+  },
   components: {
     TotalChart,
     ValidChart,

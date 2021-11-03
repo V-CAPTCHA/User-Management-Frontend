@@ -48,6 +48,9 @@
 
 export default {
   name: 'Login',
+  metaInfo: {
+    title: "Login | VCAPTCHA"
+  },
   data() {
     return {
       email: '',

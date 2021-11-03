@@ -116,6 +116,9 @@
 
   export default {
     name: 'EditProfile',
+    metaInfo: {
+      title: 'Edit Profile | VCAPTCHA '
+    },
     data() {
       return {
         firstName: "",

@@ -21,6 +21,9 @@ import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
+  metaInfo: {
+    title: 'VCAPTCHA'
+  },
   components: {
     Navbar
   },

@@ -8,5 +8,8 @@
 
   export default {
     name: 'Guide',
+    metaInfo: {
+      title: "Guide | VCAPTCHA"
+    }
   }
 </script>

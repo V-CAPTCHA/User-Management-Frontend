@@ -8,5 +8,8 @@
 
   export default {
     name: 'PageNotFound',
+    metaInfo: {
+    title: 'Page Not Found | VCAPTCHA '
+  },
   }
 </script>

@@ -85,6 +85,9 @@ import KeyForm from '../components/KeyForm.vue';
 
 export default {
   name: 'Home',
+  metaInfo: {
+    title: 'Key Management | VCAPTCHA '
+  },
   components: {
     KeyForm,
   },

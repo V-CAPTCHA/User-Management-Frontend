@@ -43,6 +43,9 @@
 
   export default {
     name: 'ResetPassword',
+    metaInfo: {
+      title: 'Reset Password | VCAPTCHA '
+    },
     data() {
       return {
         newPassword: '',

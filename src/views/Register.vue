@@ -74,6 +74,9 @@
 
 export default {
   name: 'Register',
+  metaInfo: {
+    title: 'Register | VCAPTCHA '
+  },
   data() {
     return {
       firstName: '',
