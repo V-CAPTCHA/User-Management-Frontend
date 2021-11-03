@@ -15,39 +15,43 @@ export default {
   },
   data() {
     return {
+      requestData: this.requestValue
     }
   },
-  mounted() {
-    const dayList = generateDateLabel();
+  watch: {
+    requestValue() {
+      this.requestData = this.requestValue
+      const dayList = generateDateLabel();
 
-    var chartData = {
-      type: "line",
-      data: {
-        labels: dayList,
-        datasets: [{
-          data: this.requestValue,
-          lineTension: 0,
-          label: 'Total Valid Requests',
-          fill: 'start',
-          borderColor: 'rgb(102, 187, 106)',
-          backgroundColor: "rgba(102, 187, 106, 0.4)",
-        }]
-      },
-      options: {
-        type: 'line',
-        responesive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            suggestedMin: 0,
-            suggestedMax: 100,
-          },
-        },    
-      },
+      var chartData = {
+        type: "line",
+        data: {
+          labels: dayList,
+          datasets: [{
+            data: this.requestValue,
+            lineTension: 0,
+            label: 'Total Valid Requests',
+            fill: 'start',
+            borderColor: 'rgb(102, 187, 106)',
+            backgroundColor: "rgba(102, 187, 106, 0.4)",
+          }]
+        },
+        options: {
+          type: 'line',
+          responesive: true,
+          maintainAspectRatio: false,
+          // scales: {
+          //   y: {
+          //     suggestedMin: 0,
+          //     suggestedMax: 100,
+          //   },
+          // },    
+        },
+      }
+
+      const totalchart = document.getElementById('valid-chart');
+      new Chart(totalchart, chartData);
     }
-
-    const totalchart = document.getElementById('valid-chart');
-    new Chart(totalchart, chartData);
   }
 }
 </script>
