@@ -40,12 +40,12 @@ export default {
           type: 'line',
           responesive: true,
           maintainAspectRatio: false,
-          // scales: {
-          //   y: {
-          //     suggestedMin: 0,
-          //     suggestedMax: 100,
-          //   },
-          // },    
+          scales: {
+            y: {
+              min: 0,
+              // suggestedMax: 100,
+            },
+          },    
         },
       }
 
