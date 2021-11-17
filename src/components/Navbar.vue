@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="#1a73e8" dark >
+    <v-app-bar color="#1a73e8" dark dense>
       <img src="../assets/logo.png" alt="logo" width="48px"/>
       <v-app-bar-title>
         <v-btn plain :to="{name: 'Home'}"  class="text-h5">VCAPTCHA</v-btn>
