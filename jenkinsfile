@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Clone') {
+            steps {
+                cleanWs()
+                git branch: 'main',url: 'https://github.com/V-CAPTCHA/user-management-frontend.git'
+                sh 'cp /var/lib/jenkins/workspace/env/user-management-frontend/.env ./.env'
+            }
+        }
+        stage('SonarQube Analysis') {
+            environment {
+            scannerHome = tool 'SonarLocal'
+        }
+            steps{
+               withSonarQubeEnv('SonarLocal') {
+                   sh "${scannerHome}/bin/sonar-scanner"
+}
+        }
+        }
+                stage('NPM install & Build') {
+            steps {
+                
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+                stage('Move Builed file to Nginx Location') {
+            steps {
+                sh 'rm -R -f /var/www/html/*'
+                sh 'cp -r dist/* /var/www/html/'
+            }
+        }
+    }
+}
