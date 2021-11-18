@@ -1,9 +1,12 @@
 <template>
   <div id="home">
+    <v-skeleton-loader 
+      type="image" 
+      max-width="1000" 
+      class="mx-auto pt-6"
+    ></v-skeleton-loader>
+
     <v-card id="home-container" max-width="1000" class="mx-auto pt-6" elevation="0">
-      <v-responsive :aspect-ratio="16/9">
-        <img src="../assets/banner.jpg" width="100%" class="my-6"/>
-      </v-responsive>
       <p class="text-h3">VCAPTCHA</p>
       <p class="text-h5 text-center">Human Verification Service using Voice Recongnition</p>
       <p class="text-center">
