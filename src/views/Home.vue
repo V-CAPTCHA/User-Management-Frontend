@@ -33,19 +33,19 @@
         class="mb-8"
       >
         <v-col elevation="0" width="100%" cols="12" md="4">
-          <center><v-icon aria-hidden="false" size="150">mdi-account-voice</v-icon></center> 
+          <center><v-icon color="#1a73e8" aria-hidden="false" size="150">mdi-account-voice</v-icon></center> 
           <center><h3>Using Human Voice Verification</h3></center>
           <center><p>Voice Recognition Technology</p></center>
         </v-col>
 
         <v-col elevation="0" width="100%" cols="12" md="4">
-          <center><v-icon aria-hidden="false" size="150">mdi-comment-question</v-icon></center>
+          <center><v-icon color="#1a73e8" aria-hidden="false" size="150">mdi-comment-question</v-icon></center>
           <center><h3>Using Complex Questions </h3></center>
           <center><p>Story-based sentences, complex and difficult to predict</p></center>
         </v-col>
 
         <v-col elevation="0" width="100%" cols="12" md="4">
-          <center><v-icon aria-hidden="false" size="150">mdi-desktop-mac-dashboard</v-icon></center>
+          <center><v-icon color="#1a73e8" aria-hidden="false" size="150">mdi-desktop-mac-dashboard</v-icon></center>
           <center><h3>Dashboard</h3></center>
           <center><p>Easily manage and monitoring</p></center>
         </v-col>
