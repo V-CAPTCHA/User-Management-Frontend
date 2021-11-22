@@ -112,7 +112,7 @@
         </v-col>
         
         <!-- right menu -->
-        <v-col cols=2 >
+        <v-col cols=2 class="d-none d-sm-flex">
           <div class="right-menu">
             <p><b>Contents</b></p>
             <ul>
