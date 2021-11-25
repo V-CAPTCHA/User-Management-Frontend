@@ -28,32 +28,32 @@
 
             <p>How to get KEY ID:</p>
             <ol class="ml-5">
-              <li>Go to <a href="https://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
+              <li>Go to <a href="http://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
               <li>Register and Login</li>
               <li>
-                Go to <a href="https://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
-                <a href="https://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
+                Go to <a href="http://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
+                <a href="http://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
               </li>
               <li>Click at create key</li>
-              <li>Copy your Key ID to your widget</li>
+              <li>Next step following Widget</li>
             </ol>
             <br>
                         
             <h3 ref="widget">Widget</h3>
             <ol class="ml-5">
-              <li>CDN this Code in your website with</li>
+              <li>CDN this code in your website with</li>
               <pre><code><span class="tag"><<!---->script</span> <span class="variable">src</span>=<span class="value">"http://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script></span></code></pre>
               <br>
 
-              <li>Put use this tag script for begin a service</li>
+              <li>Put vcaptcha tag in your body tag for begin a service</li>
               <pre><code><span class="tag"><<!---->vcaptcha><<!---->/vcaptcha></span></code></pre>
               <br>
 
-              <li>Add VCAPTCHA element to your web page</li>
+              <li>Add vcaptcha function to your script tag</li>
               <pre><code><span class="tag">function</span> vcaptcha_actionResult(vcaptcha_action)
 {<span class="comment">
-//put your business logic here !
-//vcaptcha_action value if passed will be "Valid"       
+//Put your business logic here !
+//vcaptcha_action will be "Valid" if verification passed
 </span>}</code></pre>
               <br>
 
@@ -66,14 +66,62 @@
 
             <!-- Site Verify Response -->
             <h3 ref="site-verify-response">Site verify response</h3>
-            <p>Make the request to verify the response token. The response is a JSON object:</p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <p>Verification will response value:</p>
+            <v-card outlined elevation="0">
+              <v-container>
+                <v-simple-table>
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="color: green;">Valid</td>
+                      <td>string</td>
+                      <td>Result of the verification is not .</td>
+                    </tr>
+                    <tr>
+                      <td style="color: red;">Invalid</td>
+                      <td>string</td>
+                      <td>Result of the verification is robot.</td>
+                    </tr>
+                  </tbody>
+                </v-simple-table>
+              </v-container>
+            </v-card>
             <br>
 
             <!-- Configuration -->
             <h3 ref="configuration">Configuration</h3>
             <p>You can config your VCAPTCHA widget following this:</p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <v-card outlined elevation="0">
+              <v-container>
+                <v-simple-table>
+                  <thead>
+                    <tr>
+                      <th>Variable</th>
+                      <th>Description</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>vcaptcha_ValueDomain</td>
+                      <td>Domain name of your website</td>
+                      <td>www.vcaptcha.work</td>
+                    </tr>
+                    <tr>
+                      <td>vcaptcha_ValueKey</td>
+                      <td>Key ID is generated from key management.</td>
+                      <td>lj3x3mi8iVb_Yx41tK3b0</td>
+                    </tr>
+                  </tbody>
+                </v-simple-table>
+              </v-container>
+            </v-card>
             <br>
 
           </div>
