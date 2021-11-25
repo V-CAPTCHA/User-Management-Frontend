@@ -71,44 +71,6 @@
           </div>
           <hr>
 
-          <!-- Server Side
-          <div id="server-side">
-            <h2 ref="server-side">Server Side</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos aliquam iste, inventore eveniet ducimus dolorum recusandae fugit officiis, quas necessitatibus incidunt enim eligendi velit minima natus deleniti odit, sequi voluptas.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime delectus, veritatis minus laborum ipsum iure dolor facere tempore velit porro ducimus aliquid commodi inventore ad pariatur earum. Adipisci, similique minus.
-            </p>
-
-            <h3 id="api" ref="api">API</h3>
-            <v-simple-table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Method</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </v-simple-table>
-          </div>
-          <hr> -->
-
         </v-col>
         
         <!-- right menu -->
@@ -123,10 +85,6 @@
                 <li @click="goto('site-verify-response')">Site Verify Response</li>
                 <li @click="goto('configuration')">Configuration</li>
               </ul>
-              <!-- <li @click="goto('server-side')">Server Side</li>
-              <ul>
-                <li @click="goto('api')">API</li>
-              </ul> -->
             </ul>
           </div>
         </v-col>
