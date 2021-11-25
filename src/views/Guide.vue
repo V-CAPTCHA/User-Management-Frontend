@@ -41,17 +41,25 @@
                         
             <h3 ref="widget">Widget</h3>
             <ol class="ml-5">
-              <li>Load the JavaScript file</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <li>CDN this Code in your website with</li>
+              <pre><code><span class="tag"><<!---->script</span> <span class="variable">src</span>=<span class="value">"http://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script></span></code></pre>
               <br>
 
-              <li>Add function to your script tag to handle vcaptcha key</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <li>Put use this tag script for begin a service</li>
+              <pre><code><span class="tag"><<!---->vcaptcha><<!---->/vcaptcha></span></code></pre>
               <br>
 
               <li>Add VCAPTCHA element to your web page</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <pre><code><span class="tag">function</span> vcaptcha_actionResult(vcaptcha_action)
+{<span class="comment">
+//put your business logic here !
+//vcaptcha_action value if passed will be "Valid"       
+</span>}</code></pre>
               <br>
+
+              <li>Add variable configuration from your key in your sciprt tag</li>
+<pre><code><span class="variable">vcaptcha_ValueDomain</span> = <span class="value">"DOMAIN"</span>;
+<span class="variable">vcaptcha_ValueKey</span> = <span class="value">"KEY"</span>;</code></pre>
 
             </ol>
             <br>
@@ -101,6 +109,10 @@ export default {
   metaInfo: {
     title: "Guide | VCAPTCHA"
   },
+  data() {
+    return {
+    }
+  },
   methods: {
     goto(refName) {
       var element = this.$refs[refName]
@@ -108,11 +120,17 @@ export default {
 
       window.scrollTo(0, top)
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
+code {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+}
+
 hr { 
   margin-top: 1rem;
   margin-bottom: 1rem; 
@@ -134,4 +152,8 @@ hr {
   font-weight: bold;
 }
 
+.tag { color: #1a73e8; }
+.comment { color: darkgray; }
+.variable { color: purple; }
+.value { color: green;}
 </style>
