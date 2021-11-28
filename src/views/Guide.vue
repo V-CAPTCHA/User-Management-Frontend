@@ -9,13 +9,27 @@
 
           <!-- Introduction -->
           <div id="introduction" ref="introduction">
-            <h2>Introduction</h2>
-            <p>
-              Human Verification Service using Voice Recognition The purpose is to create a system to determine that users are human instead of using images. 
-              As an alternative way to test whether the user is human or not. By displaying a picture or story and letting users speak what they see. 
-              The system then determines whether the user interaction is human or not.
-            </p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <v-row>
+              <v-col cols="5">
+                <v-img src="../assets/vcaptcha-demo.gif" width="100%"></v-img>
+              </v-col>
+              <v-col>
+                <h2>Introduction</h2>
+                <p>
+                  Human Verification Service using Voice Recognition The purpose is to create a system to determine that users are human instead of using images. 
+                  As an alternative way to test whether the user is human or not. By displaying a picture or story and letting users speak what they see. 
+                  The system then determines whether the user interaction is human or not.
+                </p>
+
+                <span>VCAPTCHA:</span>
+                <ul>
+                  <li>Using Human Voice Verification</li>
+                  <li>Using Complex Questions</li>
+                  <li>Dashboard</li>
+                </ul>
+              </v-col>
+            </v-row>
+
           </div>
           <hr>
           
@@ -182,6 +196,10 @@ code {
 hr { 
   margin-top: 1rem;
   margin-bottom: 1rem; 
+}
+
+#introdunction {
+  display: flex;
 }
 
 .code-box {
