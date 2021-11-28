@@ -9,13 +9,27 @@
 
           <!-- Introduction -->
           <div id="introduction" ref="introduction">
-            <h2>Introduction</h2>
-            <p>
-              Human Verification Service using Voice Recognition The purpose is to create a system to determine that users are human instead of using images. 
-              As an alternative way to test whether the user is human or not. By displaying a picture or story and letting users speak what they see. 
-              The system then determines whether the user interaction is human or not.
-            </p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <v-row>
+              <v-col cols="5">
+                <v-img src="../assets/vcaptcha-demo.gif" width="100%"></v-img>
+              </v-col>
+              <v-col>
+                <h2>Introduction</h2>
+                <p>
+                  Human Verification Service using Voice Recognition The purpose is to create a system to determine that users are human instead of using images. 
+                  As an alternative way to test whether the user is human or not. By displaying a picture or story and letting users speak what they see. 
+                  The system then determines whether the user interaction is human or not.
+                </p>
+
+                <span>VCAPTCHA:</span>
+                <ul>
+                  <li>Using Human Voice Verification</li>
+                  <li>Using Complex Questions</li>
+                  <li>Dashboard</li>
+                </ul>
+              </v-col>
+            </v-row>
+
           </div>
           <hr>
           
@@ -28,91 +42,109 @@
 
             <p>How to get KEY ID:</p>
             <ol class="ml-5">
-              <li>Go to <a href="https://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
+              <li>Go to <a href="http://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
               <li>Register and Login</li>
               <li>
-                Go to <a href="https://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
-                <a href="https://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
+                Go to <a href="http://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
+                <a href="http://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
               </li>
               <li>Click at create key</li>
-              <li>Copy your Key ID to your widget</li>
+              <li>Next step following Widget</li>
             </ol>
             <br>
                         
             <h3 ref="widget">Widget</h3>
             <ol class="ml-5">
-              <li>Load the JavaScript file</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <li>CDN this code in your website with</li>
+              <pre><code><span class="tag"><<!---->script</span> <span class="variable">src</span>=<span class="value">"http://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script></span></code></pre>
               <br>
 
-              <li>Add function to your script tag to handle vcaptcha key</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <li>Put vcaptcha tag in your body tag for begin a service</li>
+              <pre><code><span class="tag"><<!---->vcaptcha><<!---->/vcaptcha></span></code></pre>
               <br>
 
-              <li>Add VCAPTCHA element to your web page</li>
-              <v-skeleton-loader type="image"></v-skeleton-loader>
+              <li>Add vcaptcha function to your script tag</li>
+              <pre><code><span class="tag">function</span> vcaptcha_actionResult(vcaptcha_action)
+{<span class="comment">
+//Put your business logic here !
+//vcaptcha_action will be "Valid" if verification passed
+</span>}</code></pre>
               <br>
+
+              <li>Add variable configuration from your key in your sciprt tag</li>
+<pre><code><span class="variable">vcaptcha_ValueDomain</span> = <span class="value">"DOMAIN"</span>;
+<span class="variable">vcaptcha_ValueKey</span> = <span class="value">"KEY"</span>;</code></pre>
 
             </ol>
             <br>
 
             <!-- Site Verify Response -->
             <h3 ref="site-verify-response">Site verify response</h3>
-            <p>Make the request to verify the response token. The response is a JSON object:</p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <p>Verification will response value:</p>
+            <v-card outlined elevation="0">
+              <v-container>
+                <v-simple-table>
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="color: green;">Valid</td>
+                      <td>string</td>
+                      <td>Result of the verification is not .</td>
+                    </tr>
+                    <tr>
+                      <td style="color: red;">Invalid</td>
+                      <td>string</td>
+                      <td>Result of the verification is robot.</td>
+                    </tr>
+                  </tbody>
+                </v-simple-table>
+              </v-container>
+            </v-card>
             <br>
 
             <!-- Configuration -->
             <h3 ref="configuration">Configuration</h3>
             <p>You can config your VCAPTCHA widget following this:</p>
-            <v-skeleton-loader type="image"></v-skeleton-loader>
+            <v-card outlined elevation="0">
+              <v-container>
+                <v-simple-table>
+                  <thead>
+                    <tr>
+                      <th>Variable</th>
+                      <th>Description</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>vcaptcha_ValueDomain</td>
+                      <td>Domain name of your website</td>
+                      <td>www.vcaptcha.work</td>
+                    </tr>
+                    <tr>
+                      <td>vcaptcha_ValueKey</td>
+                      <td>Key ID is generated from key management.</td>
+                      <td>lj3x3mi8iVb_Yx41tK3b0</td>
+                    </tr>
+                  </tbody>
+                </v-simple-table>
+              </v-container>
+            </v-card>
             <br>
 
           </div>
           <hr>
 
-          <!-- Server Side
-          <div id="server-side">
-            <h2 ref="server-side">Server Side</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos aliquam iste, inventore eveniet ducimus dolorum recusandae fugit officiis, quas necessitatibus incidunt enim eligendi velit minima natus deleniti odit, sequi voluptas.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime delectus, veritatis minus laborum ipsum iure dolor facere tempore velit porro ducimus aliquid commodi inventore ad pariatur earum. Adipisci, similique minus.
-            </p>
-
-            <h3 id="api" ref="api">API</h3>
-            <v-simple-table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Method</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </v-simple-table>
-          </div>
-          <hr> -->
-
         </v-col>
         
         <!-- right menu -->
-        <v-col cols=2 >
+        <v-col cols=2 class="d-none d-sm-flex">
           <div class="right-menu">
             <p><b>Contents</b></p>
             <ul>
@@ -123,10 +155,6 @@
                 <li @click="goto('site-verify-response')">Site Verify Response</li>
                 <li @click="goto('configuration')">Configuration</li>
               </ul>
-              <!-- <li @click="goto('server-side')">Server Side</li>
-              <ul>
-                <li @click="goto('api')">API</li>
-              </ul> -->
             </ul>
           </div>
         </v-col>
@@ -143,6 +171,10 @@ export default {
   metaInfo: {
     title: "Guide | VCAPTCHA"
   },
+  data() {
+    return {
+    }
+  },
   methods: {
     goto(refName) {
       var element = this.$refs[refName]
@@ -150,14 +182,24 @@ export default {
 
       window.scrollTo(0, top)
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
+code {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+}
+
 hr { 
   margin-top: 1rem;
   margin-bottom: 1rem; 
+}
+
+#introdunction {
+  display: flex;
 }
 
 .code-box {
@@ -176,4 +218,8 @@ hr {
   font-weight: bold;
 }
 
+.tag { color: #1a73e8; }
+.comment { color: darkgray; }
+.variable { color: purple; }
+.value { color: green;}
 </style>
