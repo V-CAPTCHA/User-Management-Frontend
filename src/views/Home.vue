@@ -1,12 +1,8 @@
 <template>
   <div id="home">
-    <v-skeleton-loader 
-      type="image" 
-      max-width="1000" 
-      class="mx-auto pt-6"
-    ></v-skeleton-loader>
-
     <v-card id="home-container" max-width="1000" class="mx-auto pt-6" elevation="0">
+      <v-img src="../assets/logo.png" width="300px"></v-img>
+
       <p class="text-h3">VCAPTCHA</p>
       <p class="text-h5 text-center">Human Verification Service using Voice Recongnition</p>
       <p class="text-center">
