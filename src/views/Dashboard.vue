@@ -20,7 +20,7 @@
           </v-card-title>
           <v-card-subtitle class="text--primary" style="text-align: center">
             <p class="text-h2 green--text" v-if="validRequest === '-'">-</p>
-            <p class="text-h2 green--text" v-else>{{validRequest}}%</p>
+            <p class="text-h2 green--text" v-else>{{validRequest}}</p>
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -32,7 +32,7 @@
           </v-card-title>
           <v-card-subtitle class="text--primary" style="text-align: center">
             <p class="text-h2 red--text" v-if="invalidRequest === '-'">-</p>
-            <p class="text-h2 red--text" v-else>{{invalidRequest}}%</p>
+            <p class="text-h2 red--text" v-else>{{invalidRequest}}</p>
           </v-card-subtitle>
         </v-card>
       </v-col>
