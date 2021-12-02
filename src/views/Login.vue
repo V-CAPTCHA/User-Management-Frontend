@@ -1,5 +1,22 @@
 <template>
   <div class="login" v-if="!this.$store.getters.isLoggedIn">
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
     <center>
       <h2>Login to VCAPTCHA</h2>
     </center>
@@ -54,7 +71,10 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      snackbar: false,
+      text: 'Login สำเร็จ',
+      timeout: 2000,
     }
   },
   methods: {
@@ -68,8 +88,8 @@ export default {
         this.$router.replace('/dashboard')
       })
       .catch(err => {
-        alert(err.message)
-        console.log(err)
+        this.text = "Login failed Invalid email or password"
+        this.snackbar = true
       })
     }
   },

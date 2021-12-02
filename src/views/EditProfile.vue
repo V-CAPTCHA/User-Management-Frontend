@@ -1,5 +1,22 @@
 <template>
   <div class="editProfile">
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>   
+
     <v-card outlined elevation="0" width="720" class="mx-auto pb-6">
       <!--Edit Profile-->
       <v-form>
@@ -126,6 +143,8 @@
         currentPassword: "",
         newPassword: "",
         confirmationPassword: "",
+        snackbar: false,
+        text: "",
       }
     },
     methods: {
@@ -137,11 +156,12 @@
         }
         this.$store.dispatch('changeUserData', user)
         .then(() => {
-          alert('Edit profile successfully')
+          this.text = 'Edit profile successfully'
+          this.snackbar = true
         })
         .catch(err => {
-          alert(err.message)
-          console.log(err)
+          this.text = 'Edit profile failed'
+          this.snackbar = true
         })
       },
       //Change password
@@ -152,20 +172,22 @@
         }
         this.$store.dispatch('changePassword', password)
         .then(() => {
-          alert("Change password successfully")
+          this.text = 'Change password successfully'
+          this.snackbar = true
           this.currentPassword = ''
           this.newPassword = ''
           this.confirmationPassword = ''
         })
         .catch(err => {
-          alert(err.message)
-          console.log(err)
+          this.text = 'Change password failed'
+          this.snackbar = true
         })
       },
       deleteAccount: function() {
         this.$store.dispatch('deleteAccount')
         .then(() => {
-          alert("delete account successfully")
+          this.text = 'Delete account successfully'
+          this.snackbar = true
           this.$store.dispatch("logout")
           this.$router.replace('/login')
         })
