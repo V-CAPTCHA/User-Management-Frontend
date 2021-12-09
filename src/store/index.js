@@ -13,5 +13,29 @@ export default new Vuex.Store({
     user,
     key,
     dashboard
+  },
+  state: {
+    snackbar: false,
+    text: "",
+  },
+  mutations: {
+    updateSnackbar(state, payload) {
+      state.snackbar = false;
+      state.snackbar = payload.snackbar;
+      state.text = payload.text;
+    },
+  },
+  actions: {
+    snackbarOff({commit}) {
+      let payload = {
+        text: '',
+        snackbar: false
+      }
+      commit('updateSnackbar', payload)
+    }
+  },
+  getters: {
+    getSnackbar: state => state.snackbar,
+    getText: state => state.text
   }
 })
