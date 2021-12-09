@@ -1,22 +1,5 @@
 <template>
-  <div class="key-management">
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>    
-      
+  <div class="key-management">     
     <div class="header">
       <v-btn text color="#1a73e8" class="mb-2" @click="showCreateBox()">
         + CREATE KEY
@@ -116,18 +99,18 @@ export default {
       keys: [],
       createBoxIsShow: false,
       editBoxIsShow: false,
-      snackbar: false,
-      text: '',
     }
   },
   methods: {
     getAllKey: function() {
       this.$store.dispatch('getAllKey')
       .then((keys) => {
-        this.keys = keys
-      })
-      .catch(err => {
-        console.log(err)
+        if(keys === "key does not exist") {
+          this.keys = [];
+        }
+        else {
+          this.keys = keys
+        }
       })
     },
     showCreateBox: function() {
@@ -135,8 +118,6 @@ export default {
     },
     closeCreateBox: function() {
       this.createBoxIsShow = false;
-      this.snackbar = true;
-      this.text = "Successfully"
     },
     showEditBox: function(id, name, domain) {
       this.id = id;
@@ -152,11 +133,8 @@ export default {
     },
     deleteKey(id) {
       this.$store.dispatch('deleteKey', id)
-      .then(() => { 
-        this.getAllKey();
-        this.snackbar = true;
-        this.text = "Delete key successfully"
-      })
+      .then(() => this.getAllKey())
+      
     },
   },
   beforeUpdate() {

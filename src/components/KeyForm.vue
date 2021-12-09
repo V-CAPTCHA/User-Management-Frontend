@@ -1,22 +1,5 @@
 <template>
   <div class="key-form">
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-
     <v-card width="640" class="form-box">
       <v-card-title>
         {{title}}
@@ -83,8 +66,6 @@ export default {
       id: '',
       name: '',
       domain: '',
-      snackbar: false,
-      text: ''
     }
   },
   methods: {
@@ -100,11 +81,6 @@ export default {
         .then(() => {
           this.cancel();
         })
-        .catch(err => {
-          console.log(err.data.message)
-          this.snackbar = true
-          this.text = "Information can not be empty"
-        })
       }
       //edit key
       else if(this.isEdit) {
@@ -115,10 +91,6 @@ export default {
         this.$store.dispatch("editKey", data)
         .then(() => {
           this.cancel();
-        })
-        .catch(err => {
-          this.snackbar = true;
-          this.text = "Information can not be empty"
         })
       }
     }

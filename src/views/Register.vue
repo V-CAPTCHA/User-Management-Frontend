@@ -1,22 +1,5 @@
 <template>
   <div>
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-
     <center>
       <h2>Register to VCAPTCHA</h2>
     </center>
@@ -101,8 +84,6 @@ export default {
       email: '',
       password: '',
       confirmPassword: '',
-      text: '',
-      snackbar: false,
     }
   },
   methods: {
@@ -126,13 +107,6 @@ export default {
         .then(() => {
           this.$router.replace('/dashboard')
         })
-        .catch(err => {
-          this.snackbar = true
-        })
-      })
-      .catch(err => {
-        this.snackbar = true
-        this.text = "Information can not be empty"
       })
     }
   },

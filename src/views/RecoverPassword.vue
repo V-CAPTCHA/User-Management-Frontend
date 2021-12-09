@@ -1,22 +1,5 @@
 <template>
   <div class="recover-password">
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>  
-
     <center>
       <h2>Recover Password</h2>
     </center>
@@ -59,8 +42,6 @@ export default {
   data() {
     return {
       email: '',
-      snackbar: false,
-      text: '',
     }
   },
   methods: {
@@ -70,14 +51,6 @@ export default {
       }
 
       this.$store.dispatch('requestNewPassword', data)
-      .then(() => {
-        this.text = "Send link to reset password successfully"
-        this.snackbar = true
-      })
-      .catch((err) => {
-        this.text = "Send link to reset password failed"
-        this.snackbar = true
-      })
     }
   },
   created() {

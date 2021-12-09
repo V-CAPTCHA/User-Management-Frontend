@@ -54,17 +54,27 @@ export const dashboard = {
               "totalRequest": res.data.total_request,
               "totalRequestPerDay": res.data.total_request_per_day
             }
-            resolve(data);
             commit('total_request_success')
+            resolve(data);
           }
           else {
-            reject(res.data.message);
+            let payload = {
+              text: "Something wrong please try again",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('total_request_error')
+            reject(res.data.message);
           }
         })
         .catch(err => {
-          reject(err)
+          let payload = {
+            text: "Something wrong please try again",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit('total_request_error')
+          reject(err)
         })
       }) 
     },    
@@ -84,13 +94,23 @@ export const dashboard = {
             commit("valid_request_success")
           }
           else {
-            reject(res.data.message);
+            let payload = {
+              text: "Something wrong please try again",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit("valid_request_error")
+            reject(res.data.message);
           }
         })
         .catch(err => {
-          reject(err)
+          let payload = {
+            text: "Something wrong please try again",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit("valid_request_error")
+          reject(err)
         })
       }) 
     },
@@ -106,17 +126,27 @@ export const dashboard = {
               "invalidPercent": res.data.invalid_percent,
               "invalidRequestPerDay": res.data.invalid_request_per_day
             }
-            resolve(data);
             commit("invalid_request_success")
+            resolve(data);
           }
           else {
-            reject(res.data.message);
+            let payload = {
+              text: "Something wrong please try again",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit("invalid_request_error")
+            reject(res.data.message);
           }
         })
         .catch(err => {
-          reject(err)
+          let payload = {
+            text: "Something wrong please try again",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit("invalid_request_error")
+          reject(err)
         })
       }) 
     },

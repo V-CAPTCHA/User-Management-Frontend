@@ -37,6 +37,11 @@ export const auth = {
             localStorage.setItem('token', token)
             axios.defaults.headers.common['x-access-token'] = token
               
+            let payload = {
+              text: "Login Success",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('auth_success', token)
             resolve(res)
           }
@@ -57,6 +62,12 @@ export const auth = {
         commit('auth_request')
         localStorage.removeItem('token')
         delete axios.defaults.headers.common['x-access-tokens']
+
+        let payload = {
+          text: "Logout success",
+          snackbar: true,
+        }
+        commit('updateSnackbar', payload, {root: true})
         commit('logout')
         resolve()
       })
@@ -69,15 +80,30 @@ export const auth = {
         axios.post(API_URL+'/register', user)
         .then((res) => {
           if(res.data.message === "register successfully") {
+            let payload = {
+              text: "Register success",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('auth_success')
             resolve(res)
           }
           else {
+            let payload = {
+              text: "Register failed",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('auth_error')
             reject(res.data.message)
           }
         })
         .catch((err) => {
+          let payload = {
+            text: "Register failed",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit("auth_error")
           reject(err)
         })
@@ -91,15 +117,30 @@ export const auth = {
         axios.post(API_URL+'/resetpassword/', email)
         .then((res) => {
           if(res.data.message === "send link to reset password successfully") {
+            let payload = {
+              text: "Send link to reset password successfully",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit("auth_success")
             resolve(res)
           }
           else {
+            let payload = {
+              text: "Something wrong or Your email not correct",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('auth_error')
             reject(res.data.message)
           }
         })
         .catch((err) => {
+          let payload = {
+            text: "Something wrong or Your email not correct",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit("auth_error")
           reject(err)
         })
@@ -113,15 +154,30 @@ export const auth = {
         axios.put(API_URL+'/resetpassword', data)
         .then((res) => {
           if(res.data.message === "reset password sucessfully") {
+            let payload = {
+              text: "Reset password success",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit("auth_success")
             resolve(res)
           }
           else {
+            let payload = {
+              text: "Something wrong or Your link not correct",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             commit('auth_error')
             reject(res.data.message)
           }
         })
         .catch((err) => {
+          let payload = {
+            text: "Something wrong or Your link not correct",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           commit("auth_error")
           reject(err)
         })

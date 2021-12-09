@@ -1,22 +1,5 @@
 <template>
   <div class="editProfile">
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>   
-
     <v-card outlined elevation="0" width="720" class="mx-auto pb-6">
       <!--Edit Profile-->
       <v-form>
@@ -143,8 +126,6 @@
         currentPassword: "",
         newPassword: "",
         confirmationPassword: "",
-        snackbar: false,
-        text: "",
       }
     },
     methods: {
@@ -155,14 +136,6 @@
           last_name: this.lastName,
         }
         this.$store.dispatch('changeUserData', user)
-        .then(() => {
-          this.text = 'Edit profile successfully'
-          this.snackbar = true
-        })
-        .catch(err => {
-          this.text = 'Edit profile failed'
-          this.snackbar = true
-        })
       },
       //Change password
       changePassword: function() {
@@ -172,22 +145,14 @@
         }
         this.$store.dispatch('changePassword', password)
         .then(() => {
-          this.text = 'Change password successfully'
-          this.snackbar = true
           this.currentPassword = ''
           this.newPassword = ''
           this.confirmationPassword = ''
-        })
-        .catch(err => {
-          this.text = 'Change password failed'
-          this.snackbar = true
         })
       },
       deleteAccount: function() {
         this.$store.dispatch('deleteAccount')
         .then(() => {
-          this.text = 'Delete account successfully'
-          this.snackbar = true
           this.$store.dispatch("logout")
           this.$router.replace('/login')
         })
@@ -204,9 +169,6 @@
         this.firstName = user.first_name;
         this.lastName = user.last_name;
       })
-      .catch(err => {
-        console.log(err)
-      });
     },
     computed: {
       isLoggedIn: function() {

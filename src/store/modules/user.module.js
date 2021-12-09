@@ -29,10 +29,20 @@ export const user = {
             resolve(userData);
           }
           else {
+            let payload = {
+              text: "Something wrong please try again",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             reject(res.data.message);
           }
         })
         .catch(err => {
+          let payload = {
+            text: "Something wrong please try again",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           reject(err)
         })
       })
@@ -44,13 +54,28 @@ export const user = {
         axios.post(API_URL+'/users', user)
         .then(res => {
           if(res.data.message === "change first name and last name successfully") {
+            let payload = {
+              text: "Change your information success",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve(res)
           }
           else {
+            let payload = {
+              text: "Change your information failed",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve(res.data.message)
           }
         })
         .catch(err => {
+          let payload = {
+            text: "Change your information failed",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           reject(err)
         })
       })
@@ -62,13 +87,28 @@ export const user = {
         axios.post(API_URL+'/users/password', password)
         .then(res => {
           if(res.data.message === "change password successfully"){
+            let payload = {
+              text: "Change password success",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve(res)
           }
           else {
+            let payload = {
+              text: "Change password failed",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve(res.data.message)
           }
         })
         .catch(err => {
+          let payload = {
+            text: "Change password failed",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           reject(err)
         })
       })
@@ -79,13 +119,28 @@ export const user = {
         axios.delete(API_URL+'/users')
         .then(res => {
           if (res.data.message === "delete account successfully") {
+            let payload = {
+              text: "Delete account sucess",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve.apply(res)
           }
           else {
+            let payload = {
+              text: "Delete account failed",
+              snackbar: true
+            }
+            commit('updateSnackbar', payload, {root: true})
             resolve(res.data.message)
           }
         })
         .catch(err => {
+          let payload = {
+            text: "Delete account failed",
+            snackbar: true
+          }
+          commit('updateSnackbar', payload, {root: true})
           reject(err)
         })
       })
