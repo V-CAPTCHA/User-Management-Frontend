@@ -72,8 +72,7 @@
               <br>
 
               <li>Add variable configuration from your key in your sciprt tag</li>
-<pre><code><span class="variable">vcaptcha_ValueDomain</span> = <span class="value">"DOMAIN"</span>;
-<span class="variable">vcaptcha_ValueKey</span> = <span class="value">"KEY"</span>;</code></pre>
+<pre><code><span class="variable">vcaptcha_ValueKey</span> = <span class="value">"KEY"</span>;</code></pre>
 
             </ol>
             <br>
@@ -122,11 +121,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>vcaptcha_ValueDomain</td>
-                      <td>Domain name of your website</td>
-                      <td>www.vcaptcha.work</td>
-                    </tr>
                     <tr>
                       <td>vcaptcha_ValueKey</td>
                       <td>Key ID is generated from key management.</td>
