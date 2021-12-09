@@ -11,7 +11,7 @@
           <div id="introduction" ref="introduction">
             <v-row>
               <v-col cols="5">
-                <v-img src="../assets/vcaptcha-demo.gif" width="100%"></v-img>
+                <v-img src="../assets/vcaptcha-demo.gif" width="100%" class="using-gif"></v-img>
               </v-col>
               <v-col>
                 <h2>Introduction</h2>
@@ -194,6 +194,10 @@ hr {
 
 #introdunction {
   display: flex;
+}
+
+.using-gif {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .code-box {
