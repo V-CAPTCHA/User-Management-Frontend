@@ -9,6 +9,8 @@
           <v-text-field
             id="newPassword"
             v-model="newPassword"
+            :rules="[rules.required, rules.minimum]"
+            counter="50"
             label="New Password"
             outlined
             dense
@@ -18,6 +20,8 @@
           <v-text-field
             id="confirmNewPassword"
             v-model="confirmNewPassword"
+            :rules="[rules.required, rules.minimum, rules.confirm]"
+            counter="50"
             label="Confirm New Password"
             outlined
             dense
@@ -50,6 +54,12 @@
       return {
         newPassword: '',
         confirmNewPassword: '',
+        rules: {
+        required: value => !!value || 'Required.',
+        counter: value => value.length <= 50 || 'Max 50 characters',
+        minimum: value => value.length >= 8 || 'Min 8 characters.',
+        confirm: value => value === this.password || 'Password confirmation does not match.'
+      }
       }
     },
     methods: {
