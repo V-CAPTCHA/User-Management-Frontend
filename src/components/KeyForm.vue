@@ -10,6 +10,7 @@
           id="name"
           v-model="name"
           label="Display Name"
+          :rules="[rules.required]"
           counter="50"
           required
           outlined
@@ -19,6 +20,7 @@
         <v-text-field
           id="domain"
           v-model="domain"
+          :rules="[rules.required]"
           label="Domain"
           counter="50"
           required
@@ -66,6 +68,9 @@ export default {
       id: '',
       name: '',
       domain: '',
+      rules: {
+        required: value => !!value || 'Required.',
+      }
     }
   },
   methods: {
