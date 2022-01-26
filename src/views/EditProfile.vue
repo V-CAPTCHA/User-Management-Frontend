@@ -9,6 +9,7 @@
           <v-text-field
             id="firstName"
             v-model="firstName"
+            :rules="[rules.required]"
             label="First Name"
             counter="50"
             outlined
@@ -19,6 +20,7 @@
           <v-text-field
             id="lastName"
             v-model="lastName"
+            :rules="[rules.required]"
             label="Last Name"
             counter="50"
             outlined
@@ -52,6 +54,7 @@
           <v-text-field
             id="currentPassword"
             v-model="currentPassword"
+            :rules="[rules.required, rules.minimum]"
             label="Current Password"
             outlined
             dense
@@ -61,6 +64,7 @@
           <v-text-field
             id="newPassword"
             v-model="newPassword"
+            :rules="[rules.required, rules.minimum]"
             label="New Password"
             outlined
             dense
@@ -70,6 +74,7 @@
           <v-text-field
             id="passwordConfirmation"
             v-model="confirmationPassword"
+            :rules="[rules.required, rules.minimum, rules.confirm]"
             label="Password Confirmation"
             outlined
             dense
@@ -126,6 +131,16 @@
         currentPassword: "",
         newPassword: "",
         confirmationPassword: "",
+        rules: {
+          required: value => !!value || 'Required.',
+          counter: value => value.length <= 50 || 'Max 50 characters',
+          email: value => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return pattern.test(value) || 'Invalid e-mail.'
+          },
+          minimum: value => value.length >= 8 || 'Min 8 characters.',
+          confirm: value => value === this.newPassword || 'Password confirmation does not match.'
+        }
       }
     },
     methods: {

@@ -9,6 +9,9 @@
           <v-text-field
             id="email"
             v-model="email"
+            :rules="[rules.required, rules.email, rules.counter]"
+            counter
+            maxlength="50"
             label="Email"
             outlined
             dense
@@ -18,6 +21,9 @@
           <v-text-field
             id="password"
             v-model="password"
+            :rules="[rules.required, rules.counter, rules.minimum]"
+            counter
+            maxlength="50"
             label="Password"
             outlined
             dense
@@ -55,6 +61,15 @@ export default {
     return {
       email: '',
       password: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        counter: value => value.length <= 50 || 'Max 50 characters',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        },
+        minimum: value => value.length >= 8 || 'Min 8 characters.',
+      }
     }
   },
   methods: {
