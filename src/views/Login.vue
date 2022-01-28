@@ -21,13 +21,15 @@
           <v-text-field
             id="password"
             v-model="password"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showPassword ? 'text' : 'password'"
+            @click:append="showPassword = !showPassword"
             :rules="[rules.required, rules.counter, rules.minimum]"
             counter
             maxlength="50"
             label="Password"
             outlined
             dense
-            type="password"
           ></v-text-field>
 
           <router-link id="forgot-password" to="/recoverpassword" class="text-caption">Forgot your password ?</router-link>
@@ -69,7 +71,8 @@ export default {
           return pattern.test(value) || 'Invalid e-mail.'
         },
         minimum: value => value.length >= 8 || 'Min 8 characters.',
-      }
+      },
+      showPassword: false,
     }
   },
   methods: {

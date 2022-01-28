@@ -14,7 +14,9 @@
             label="New Password"
             outlined
             dense
-            type="password"
+            :append-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showNewPassword ? 'text' : 'password'"
+            @click:append="showNewPassword = !showNewPassword"
           ></v-text-field>
 
           <v-text-field
@@ -25,7 +27,9 @@
             label="Confirm New Password"
             outlined
             dense
-            type="password"
+            :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showConfirmPassword ? 'text' : 'password'"
+            @click:append="showConfirmPassword = !showConfirmPassword"
           ></v-text-field>
           
           <v-btn 
@@ -55,11 +59,13 @@
         newPassword: '',
         confirmNewPassword: '',
         rules: {
-        required: value => !!value || 'Required.',
-        counter: value => value.length <= 50 || 'Max 50 characters',
-        minimum: value => value.length >= 8 || 'Min 8 characters.',
-        confirm: value => value === this.password || 'Password confirmation does not match.'
-      }
+          required: value => !!value || 'Required.',
+          counter: value => value.length <= 50 || 'Max 50 characters',
+          minimum: value => value.length >= 8 || 'Min 8 characters.',
+          confirm: value => value === this.password || 'Password confirmation does not match.'
+        },
+        showNewPassword: false,
+        showConfirmPassword: false,
       }
     },
     methods: {
