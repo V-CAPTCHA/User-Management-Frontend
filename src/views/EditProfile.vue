@@ -58,7 +58,9 @@
             label="Current Password"
             outlined
             dense
-            type="password"
+            :append-icon="showCurrentPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showCurrentPassword ? 'text' : 'password'"
+            @click:append="showCurrentPassword = !showCurrentPassword"
           ></v-text-field>
 
           <v-text-field
@@ -68,7 +70,9 @@
             label="New Password"
             outlined
             dense
-            type="password"
+            :append-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showNewPassword ? 'text' : 'password'"
+            @click:append="showNewPassword = !showNewPassword"
           ></v-text-field>
 
           <v-text-field
@@ -78,7 +82,9 @@
             label="Password Confirmation"
             outlined
             dense
-            type="password"
+            :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showConfirmPassword ? 'text' : 'password'"
+            @click:append="showConfirmPassword = !showConfirmPassword"
           ></v-text-field>
 
           <div class="buttonContainer">
@@ -140,7 +146,10 @@
           },
           minimum: value => value.length >= 8 || 'Min 8 characters.',
           confirm: value => value === this.newPassword || 'Password confirmation does not match.'
-        }
+        },
+        showCurrentPassword: false,
+        showNewPassword: false,
+        showConfirmPassword: false,
       }
     },
     methods: {

@@ -46,7 +46,9 @@
             label="Password"
             outlined
             dense
-            type="password"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showPassword ? 'text' : 'password'"
+            @click:append="showPassword = !showPassword"
           ></v-text-field>
 
           <v-text-field
@@ -57,7 +59,9 @@
             label="Confirm Password"
             outlined
             dense
-            type="password"
+            :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showConfirmPassword ? 'text' : 'password'"
+            @click:append="showConfirmPassword = !showConfirmPassword"
           ></v-text-field>
 
           <v-btn 
@@ -101,7 +105,9 @@ export default {
         },
         minimum: value => value.length >= 8 || 'Min 8 characters.',
         confirm: value => value === this.password || 'Password confirmation does not match.'
-      }
+      },
+      showPassword: false,
+      showConfirmPassword: false,
     }
   },
   methods: {
