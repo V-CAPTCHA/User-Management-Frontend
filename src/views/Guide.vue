@@ -107,6 +107,11 @@
             </v-card>
             <br>
 
+            <h3 ref="developer">Developer Mode</h3>
+            <p>If you are developer and want to use dev mode for hide alert or warning you can put <b>?dev=1</b> parameter on your url following this:</p>
+            <pre><code>http://localhost:8080/<span class="value font-weight-bold">?dev=1</span ></code></pre>
+            <br>
+
             <!-- Configuration -->
             <h3 ref="configuration">Configuration</h3>
             <p>You can config your VCAPTCHA widget following this:</p>
@@ -131,10 +136,8 @@
               </v-container>
             </v-card>
             <br>
-
           </div>
           <hr>
-
         </v-col>
         
         <!-- right menu -->
@@ -147,6 +150,7 @@
               <ul>
                 <li @click="goto('widget')">Widget</li>
                 <li @click="goto('site-verify-response')">Site Verify Response</li>
+                <li @click="goto('developer')">Developer Mode</li>
                 <li @click="goto('configuration')">Configuration</li>
               </ul>
             </ul>
