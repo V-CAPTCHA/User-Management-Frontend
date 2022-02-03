@@ -42,11 +42,11 @@
 
             <p>How to get KEY ID:</p>
             <ol class="ml-5">
-              <li>Go to <a href="http://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
+              <li>Go to <a href="https://vcaptcha.work" target="_blank">https://vcaptcha.work</a></li>
               <li>Register and Login</li>
               <li>
-                Go to <a href="http://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
-                <a href="http://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
+                Go to <a href="https://vcaptcha.work/keymanagement" target="_blank">KEY MANAGEMENT</a> or 
+                <a href="https://vcaptcha.work/keymanagement" target="_blank">KEYS</a> tab
               </li>
               <li>Click at create key</li>
               <li>Next step following Widget</li>
@@ -56,7 +56,7 @@
             <h3 ref="widget">Widget</h3>
             <ol class="ml-5">
               <li>CDN this code in your website with</li>
-              <pre><code><span class="tag"><<!---->script</span> <span class="variable">src</span>=<span class="value">"http://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script></span></code></pre>
+              <pre><code><span class="tag"><<!---->script</span> <span class="variable">src</span>=<span class="value">"https://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script></span></code></pre>
               <br>
 
               <li>Put vcaptcha tag in your body tag for begin a service</li>
@@ -107,6 +107,11 @@
             </v-card>
             <br>
 
+            <h3 ref="developer">Developer Mode</h3>
+            <p>If you are developer and want to use dev mode for hide alert or warning you can put <b>?dev=1</b> parameter on your url following this:</p>
+            <pre><code>http://localhost:8080/<span class="value font-weight-bold">?dev=1</span ></code></pre>
+            <br>
+
             <!-- Configuration -->
             <h3 ref="configuration">Configuration</h3>
             <p>You can config your VCAPTCHA widget following this:</p>
@@ -131,11 +136,54 @@
               </v-container>
             </v-card>
             <br>
-
           </div>
           <hr>
 
+          <!-- Example -->
+          <div id="exmaple" ref="example">
+            <h2>Example</h2>
+            <p>In this example, VCAPTCHA will be applied to a simple login page. Using the <b>index.html</b> file to create a website and create your key with domain name <b>127.0.0.1</b> following this: </p>
+
+            <h3 id="source-code" ref="source-code">Source Code</h3>
+            <pre><code><span class="tag"><<!---->!DOCTYPE html>
+<<!---->html>
+  <<!---->head>
+    <<!---->title></span>VCAPTCHA Example<span class="tag"><<!---->/title>
+  <<!---->/head>
+  <<!---->body>
+    <<!---->h1></span>VCAPTCHA EXMAPLE<span class="tag"><<!---->/h1>
+
+    <<!---->label</span> <span class="variable">for</span>=<span class="value">"username"</span><span class="tag">></span>Username<span class="tag"><<!---->/label>
+    <<!---->input</span> <span class="variable">id</span>=<span class="value">"username"</span> <span class="variable">type</span>=<span class="value">"text"</span> <span class="tag">/>
+    <<!---->br>
+
+    <<!---->label</span> <span class="variable">for</span>=<span class="value">"password"</span><span class="tag">></span>Password<span class="tag"><<!---->/label>
+    <<!---->input</span> <span class="variable">id</span>=<span class="value">"password"</span> <span class="variable">type</span>=<span class="value">"password"</span> <span class="tag">/>
+    <<!---->br>
+
+    <<!---->vcaptcha><<!---->/vcaptcha>
+
+    <<!---->button</span> <span class="variable">type</span>=<span class="value">"submit"</span><span class="tag">></span>Login<span class="tag"><<!---->/button>
+
+    <<!---->script</span> <span class="variable">src</span>=<span class="value">"https://cdn.vcaptcha.work/"</span><span class="tag">><<!---->/script>
+    <<!---->script></span>
+      <span class="variable">vcaptcha_ValueKey</span> = <span class="hightlight"><b>"YOUR_KEY"</b></span>;
+
+      <span class="tag">function</span> vcaptcha_actionResult(vcaptcha_action) {
+        <span class="comment">//Put your business logic here</span>
+        console.log("Login Successful");
+      }
+    <span class="tag"><<!---->/script>
+  <<!---->/body>
+<<!---->/html></span></code></pre><br>
+
+            <h3 id="result" ref="result">The Result</h3>
+            <p>Use developer mode for testing VCAPTCHA, for example <b>http://127.0.0.1:5501/index.html?dev=1</b></p>
+            <v-img src="../assets/example_result.png" width="432px" id="example-result"></v-img>
+          </div>
+          <hr>
         </v-col>
+
         
         <!-- right menu -->
         <v-col cols=2 class="d-none d-sm-flex">
@@ -147,7 +195,13 @@
               <ul>
                 <li @click="goto('widget')">Widget</li>
                 <li @click="goto('site-verify-response')">Site Verify Response</li>
+                <li @click="goto('developer')">Developer Mode</li>
                 <li @click="goto('configuration')">Configuration</li>
+              </ul>
+              <li @click="goto('example')">Example</li>
+              <ul>
+                <li @click="goto('source-code')">Source Code</li>
+                <li @click="goto('result')">The Result</li>
               </ul>
             </ul>
           </div>
@@ -216,8 +270,16 @@ hr {
   font-weight: bold;
 }
 
+#example-result {
+  margin: auto;  
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+
+
 .tag { color: #1a73e8; }
 .comment { color: darkgray; }
 .variable { color: purple; }
 .value { color: green;}
+.hightlight { color: red}
 </style>
