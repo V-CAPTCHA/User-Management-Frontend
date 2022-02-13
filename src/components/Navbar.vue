@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-app-bar color="#1a73e8" dark dense>
+      <!-- Logo -->
       <img src="../assets/logo.png" alt="logo" width="48px"/>
       <v-app-bar-title>
         <v-btn plain :to="{name: 'Home'}"  class="text-h5">VCAPTCHA</v-btn>
@@ -8,7 +9,7 @@
 
       <v-spacer></v-spacer>
 
-      <!-- Hidden only on xs -->
+      <!-- Hidden on xs size -->
       <div class="d-none d-sm-flex">
         <v-btn plain :to="{name: 'Home'}">Home</v-btn>
         <v-btn plain :to="{name: 'Guide'}">Guide</v-btn>
@@ -49,10 +50,11 @@
         </div>
       </div>
 
-      <!-- Visible only on xs	-->
+      <!-- Visible on xs	-->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="d-flex d-sm-none"></v-app-bar-nav-icon>
     </v-app-bar>
 
+    <!-- Sidebar -->
     <v-navigation-drawer
       v-model="drawer"
       absolute
@@ -60,9 +62,7 @@
       temporary
       :width="512"
     >
-      <v-list
-        nav
-      >
+      <v-list nav>
         <v-list-item-group
           v-model="group"
           active-class="blue--text text--accent-4"
@@ -107,6 +107,7 @@
       </v-list>
     </v-navigation-drawer>
 
+    <!-- Loading bar -->
     <v-progress-linear
       v-if="isLoading"
       indeterminate

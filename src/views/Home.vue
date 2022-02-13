@@ -45,9 +45,7 @@
           <center><h3>Dashboard</h3></center>
           <center><p>Easily manage and monitoring</p></center>
         </v-col>
-
       </v-row>
-    
     </v-card>
   </div>
 </template>

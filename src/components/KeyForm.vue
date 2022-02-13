@@ -6,6 +6,7 @@
       </v-card-title>
 
       <v-card-text>
+        <!-- Name -->
         <v-text-field
           id="name"
           v-model="name"
@@ -17,6 +18,7 @@
           dense
         ></v-text-field>
 
+        <!-- Domain -->
         <v-text-field
           id="domain"
           v-model="domain"
@@ -30,6 +32,7 @@
       </v-card-text>
 
       <v-container class="pt-0 buttonContainer">
+          <!-- Confirm btn -->
           <v-btn 
             id="confirmBtn" 
             color="#1a73e8" 
@@ -38,6 +41,8 @@
           >
             Confirm
           </v-btn>
+
+          <!-- Cancel btn -->
           <v-btn 
             id="cancleBtn" 
             color="red" 

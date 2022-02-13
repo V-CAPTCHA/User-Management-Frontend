@@ -8,7 +8,6 @@
         </v-tabs>
 
         <router-view></router-view>
-
       </v-container>
     </v-card>
   </div>
