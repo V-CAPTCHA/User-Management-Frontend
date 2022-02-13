@@ -29,19 +29,13 @@
           ></v-text-field>
 
           <div class="buttonContainer">
-            <!--Button-->
+            <!-- Save information btn -->
             <v-btn
               class="saveBtn" 
               color="#1a73e8" 
               depressed dark
               @click="changeUserData()"
             >Save</v-btn>
-
-            <!-- <v-btn
-              class="ml-2 cancelBtn"
-              color="grey" 
-              depressed dark 
-            >Cancel</v-btn> -->
           </div>
         </v-container>
       </v-form>
@@ -50,7 +44,8 @@
       <v-form>
         <v-container>
           <h3 class="mb-3">Change Password</h3>
-          <!--Text Field-->
+          
+          <!-- Current password -->
           <v-text-field
             id="currentPassword"
             v-model="currentPassword"
@@ -63,6 +58,7 @@
             @click:append="showCurrentPassword = !showCurrentPassword"
           ></v-text-field>
 
+          <!-- New password -->
           <v-text-field
             id="newPassword"
             v-model="newPassword"
@@ -75,6 +71,7 @@
             @click:append="showNewPassword = !showNewPassword"
           ></v-text-field>
 
+          <!-- Password confirmation -->
           <v-text-field
             id="passwordConfirmation"
             v-model="confirmationPassword"
@@ -88,19 +85,13 @@
           ></v-text-field>
 
           <div class="buttonContainer">
-            <!--Button-->
+            <!-- Save password btn -->
             <v-btn
               class="saveBtn" 
               color="#1a73e8" 
               depressed dark
               @click="changePassword()"
             >Save</v-btn>
-
-            <!-- <v-btn
-              class="ml-2 cancelBtn"
-              color="grey" 
-              depressed dark 
-            >Cancel</v-btn> -->
           </div>
         </v-container>
       </v-form>
@@ -110,6 +101,8 @@
         <v-container>
           <h3 class="mb-3">Delete Account</h3>
           <span>Click on delete button </span>
+
+          <!-- Delete account btn -->
           <v-btn
             class="ml-2"
             id="cancelBtn" 
@@ -124,7 +117,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'EditProfile',
     metaInfo: {
@@ -174,6 +166,7 @@
           this.confirmationPassword = ''
         })
       },
+      //Delete account
       deleteAccount: function() {
         this.$store.dispatch('deleteAccount')
         .then(() => {
@@ -187,7 +180,7 @@
         this.$router.replace('/login')
       }
 
-      //get user data on created
+      //Get user data on created
       this.$store.dispatch('getUserData')
       .then((user) => {
         this.firstName = user.first_name;

@@ -183,7 +183,6 @@
           </div>
           <hr>
         </v-col>
-
         
         <!-- right menu -->
         <v-col cols=2 class="d-none d-sm-flex">
@@ -206,7 +205,6 @@
             </ul>
           </div>
         </v-col>
-
       </v-row>
     </v-card>
   </div>
@@ -274,7 +272,6 @@ hr {
   margin: auto;  
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-
 
 
 .tag { color: #1a73e8; }

@@ -6,6 +6,7 @@
     <v-card outlined elevation="0" width="480" class="mx-auto my-5 pt-6">
       <v-form>
         <v-container>
+          <!-- Email -->
           <v-text-field
             id="email"
             v-model="email"
@@ -15,6 +16,7 @@
             dense
           ></v-text-field>
           
+          <!-- Submit -->
           <v-btn 
             id="loginBtn" 
             class="mb-6" 

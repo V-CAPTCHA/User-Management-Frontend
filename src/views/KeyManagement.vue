@@ -8,6 +8,7 @@
 
     <v-simple-table>
       <template v-slot:default>
+        <!-- Headers -->
         <thead>
           <tr>
             <th class="text-left" style="color: white;">Name</th>
@@ -18,6 +19,7 @@
           </tr>
         </thead>
         
+        <!-- Body -->
         <tbody v-if="!!keys">
           <tr v-for="key in keys" :key="key.key_id">
             <td>{{ key.key_name }}</td>
@@ -58,7 +60,7 @@
       </template>
     </v-simple-table>
 
-    <!-- Create -->
+    <!-- Create key -->
     <KeyForm 
       title="Create Key" 
       v-if="createBoxIsShow" 
@@ -66,7 +68,7 @@
       :cancel="closeCreateBox" 
     />
 
-    <!-- Edit -->
+    <!-- Edit key -->
     <KeyForm 
       title="Edit Key" 
       v-if="editBoxIsShow" 

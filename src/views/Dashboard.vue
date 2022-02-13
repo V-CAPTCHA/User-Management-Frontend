@@ -2,6 +2,7 @@
   <div>
     <!-- Values -->
     <v-row>
+      <!-- Total Request -->
       <v-col cols="12" sm="12" md="4" lg="4" xl="4">
         <v-card elevation="0" outlined>
           <v-card-title class="text--secondary">
@@ -13,6 +14,7 @@
         </v-card>
       </v-col>
       
+      <!-- Valid Request -->
       <v-col cols="12" sm="6" md="4" lg="4" xl="4">
         <v-card elevation="0" outlined>
           <v-card-title class="text--secondary">
@@ -25,6 +27,7 @@
         </v-card>
       </v-col>
       
+      <!-- Invalid Request -->
       <v-col cols="12" sm="6" md="4" lg="4" xl="4">
         <v-card elevation="0" outlined>
           <v-card-title class="text--secondary">
@@ -40,6 +43,7 @@
 
     <!-- Graph -->
     <v-row>
+      <!-- Total Request Chart -->
       <v-col lg="12">
         <v-card elevation="0" outlined>
           <v-card-title class="text--secondary">
@@ -60,6 +64,7 @@
     </v-row>
 
     <v-row>
+      <!-- Valid request chart -->
       <v-col lg="6">
         <v-card elevation="0" outlined>
           <v-card-title class="green--text text--lighten-1">
@@ -78,6 +83,7 @@
         </v-card>
       </v-col>
 
+      <!-- Invalid request chart -->
       <v-col lg="6">
         <v-card elevation="0" outlined>
           <v-card-title class="red--text text--lighten-1">
@@ -141,21 +147,21 @@ export default {
     }
   },
   created() {
-    //total request
+    //Get total request
     this.$store.dispatch("getTotalRequest")
     .then(data => {
       this.totalRequest = data.totalRequest;
       this.totalRequestArray = data.totalRequestPerDay;
     })
 
-    //valid reqeust
+    //Get valid reqeust
     this.$store.dispatch("getValidRequest")
     .then(data => {
       this.validRequest = data.validPercent;
       this.totalValidRequestArray = data.validRequestPerDay;
     })
 
-    //invalid request
+    //Get invalid request
     this.$store.dispatch("getInvalidRequest")
     .then(data => {
       this.invalidRequest = data.invalidPercent;

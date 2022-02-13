@@ -6,6 +6,7 @@
     <v-card outlined elevation="0" width="480" class="mx-auto my-5 pt-6">
       <v-form>
         <v-container>
+          <!-- Email -->
           <v-text-field
             id="email"
             v-model="email"
@@ -18,6 +19,7 @@
             type="email"
           ></v-text-field>
 
+          <!-- Password -->
           <v-text-field
             id="password"
             v-model="password"
@@ -34,6 +36,7 @@
 
           <router-link id="forgot-password" to="/recoverpassword" class="text-caption">Forgot your password ?</router-link>
           
+          <!-- Submit -->
           <v-btn 
             id="loginBtn" 
             class="my-6" 

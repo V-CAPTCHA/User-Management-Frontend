@@ -6,6 +6,7 @@
     <v-card outlined elevation="0" width="480" class="mx-auto my-5 pt-6">
       <v-form>
         <v-container>
+          <!-- First name -->
           <v-text-field
             id="first-name"
             v-model="firstName"
@@ -16,6 +17,7 @@
             dense
           ></v-text-field>
 
+          <!-- Last name -->
           <v-text-field
             id="last-name"
             v-model="lastName"
@@ -26,6 +28,7 @@
             dense
           ></v-text-field>
 
+          <!-- Email -->
           <v-text-field
             id="email"
             v-model="email"
@@ -38,6 +41,7 @@
             type="email"
           ></v-text-field>
           
+          <!-- Password -->
           <v-text-field
             id="password"
             v-model="password"
@@ -51,6 +55,7 @@
             @click:append="showPassword = !showPassword"
           ></v-text-field>
 
+          <!-- Confirm password -->
           <v-text-field
             id="confirm-password"
             v-model="confirmPassword"
@@ -64,6 +69,7 @@
             @click:append="showConfirmPassword = !showConfirmPassword"
           ></v-text-field>
 
+          <!-- Submit -->
           <v-btn 
             id="loginBtn" 
             class="my-6" 

@@ -12,6 +12,7 @@ Vue.use(VueMeta, {
 
 Vue.config.productionTip = false
 
+// Get token from header
 axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
 
 new Vue({

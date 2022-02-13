@@ -1,11 +1,11 @@
 <template>
   <div class="app">
+    <!-- Alert box -->
     <v-snackbar
       v-model="snackbar"
       :timeout="timeout"
     >
       {{ text }}
-
       <template v-slot:action="{ attrs }">
         <v-btn
           color="#e74c3c"
@@ -19,14 +19,17 @@
     </v-snackbar>   
 
     <v-app>
+      <!-- Navbar -->
       <Navbar/>
 
+      <!-- App -->
       <v-main>
         <v-container>
           <router-view/>
         </v-container>
       </v-main>
 
+      <!-- Footer -->
       <v-footer color="#1a73e8" dark>
         <p class="footer">© 2021 VCAPTCHA</p>
       </v-footer>
@@ -36,7 +39,6 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import { mapState } from 'vuex'
 
 export default {
   name: 'App',

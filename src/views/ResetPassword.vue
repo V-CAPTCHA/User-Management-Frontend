@@ -6,6 +6,7 @@
     <v-card outlined elevation="0" width="480" class="mx-auto my-5 pt-6">
       <v-form>
         <v-container>
+          <!-- New password -->
           <v-text-field
             id="newPassword"
             v-model="newPassword"
@@ -19,6 +20,7 @@
             @click:append="showNewPassword = !showNewPassword"
           ></v-text-field>
 
+          <!-- Confirm new password -->
           <v-text-field
             id="confirmNewPassword"
             v-model="confirmNewPassword"
@@ -32,6 +34,7 @@
             @click:append="showConfirmPassword = !showConfirmPassword"
           ></v-text-field>
           
+          <!-- Submit -->
           <v-btn 
             id="loginBtn" 
             class="mb-6" 
