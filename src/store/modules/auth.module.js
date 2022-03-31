@@ -192,7 +192,21 @@ export const auth = {
           reject(err)
         })
       })
-    }
+    },
+    checkTokenExp({commit}) {
+      return new Promise((resolve, reject) => { 
+        //Check Super Admin
+        axios.get(API_URL+'/users')
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          if(err.response.data.message === 'invalid token') reject('expired')
+          else reject(err)
+
+        })
+      })
+    },
   },
   getters: {
     isLoggedIn: state => !!state.token,
