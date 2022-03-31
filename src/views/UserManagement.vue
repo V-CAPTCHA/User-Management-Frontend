@@ -20,5 +20,25 @@
     metaInfo: {
       title: 'VCAPTCHA'
     },
+    beforeUpdate() {
+      //check expire token
+      this.$store.dispatch('checkTokenExp')
+      .catch(err => {
+        if(err === "expired") {
+          this.$store.dispatch('logout')
+          this.$router.replace('/login')
+        }
+      })
+    },
+    mounted() {
+      //check expire token
+      this.$store.dispatch('checkTokenExp')
+      .catch(err => {
+        if(err === "expired") {
+          this.$store.dispatch('logout')
+          this.$router.replace('/login')
+        }
+      })
+    }
   }
 </script>
