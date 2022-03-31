@@ -50,14 +50,17 @@ export const auth = {
               text: res.data.message,
               snackbar: true
             }
+            console.log(res.data.message)
+            console.log(res.data.msg)
             commit('updateSnackbar', payload, {root: true})
             commit('auth_error')
             reject(res.data.message)
+            
           }
         })
         .catch((err) => {
           let payload = {
-            text: err.response.data.message,
+            text: err.response.data.errors[0].msg,
             snackbar: true
           }
           commit('updateSnackbar', payload, {root: true})
